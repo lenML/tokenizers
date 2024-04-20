@@ -15,25 +15,25 @@ Below is a table showcasing all available packages, the models they support, and
 | Package Name            | Supported Model(s)                  | Repository Link                         |
 |-------------------------|-------------------------------------|-----------------------------------------|
 | `tokenizers` (core)     | N/A (Core Tokenization Library)     | [@lenml/tokenizers](./packages/tokenizers) |
-| `baichuan2`             | Baichuan 2                          | [@lenml/baichuan2](./packages/baichuan2) |
-| `chatglm3`              | ChatGLM 3                           | [@lenml/chatglm3](./packages/chatglm3)   |
-| `claude`                | Claude 2/3                          | [@lenml/claude](./packages/claude)       |
-| `claude1`               | Claude 1                            | [@lenml/claude1](./packages/claude1)     |
-| `command_r_plus`        | Command-R-Plus                      | [@lenml/command_r_plus](./packages/command_r_plus) |
-| `gemma`                 | Gemma                               | [@lenml/gemma](./packages/gemma)         |
-| `gpt2`                  | GPT-2                               | [@lenml/gpt2](./packages/gpt2)           |
-| `gpt3`                  | GPT-3                               | [@lenml/gpt3](./packages/gpt3)           |
-| `gpt35turbo`            | GPT-3.5 Turbo                       | [@lenml/gpt35turbo](./packages/gpt35turbo) |
-| `gpt35turbo16k`         | GPT-3.5 Turbo 16k                   | [@lenml/gpt35turbo16k](./packages/gpt35turbo16k) |
-| `gpt4`                  | GPT-4                               | [@lenml/gpt4](./packages/gpt4)           |
-| `internlm2`             | InternLM 2                          | [@lenml/internlm2](./packages/internlm2) |
 | `llama2`                | Llama 2 (mistral, zephyr, vicuna)| [@lenml/llama2](./packages/llama2)       |
 | `llama3`                | Llama 3                             | [@lenml/llama3](./packages/llama3)       |
+| `gpt4`                  | GPT-4                               | [@lenml/gpt4](./packages/gpt4)           |
+| `gpt35turbo`            | GPT-3.5 Turbo                       | [@lenml/gpt35turbo](./packages/gpt35turbo) |
+| `gpt35turbo16k`         | GPT-3.5 Turbo 16k                   | [@lenml/gpt35turbo16k](./packages/gpt35turbo16k) |
+| `gpt3`                  | GPT-3                               | [@lenml/gpt3](./packages/gpt3)           |
+| `gemma`                 | Gemma                               | [@lenml/gemma](./packages/gemma)         |
+| `claude`                | Claude 2/3                          | [@lenml/claude](./packages/claude)       |
+| `claude1`               | Claude 1                            | [@lenml/claude1](./packages/claude1)     |
+| `gpt2`                  | GPT-2                               | [@lenml/gpt2](./packages/gpt2)           |
+| `baichuan2`             | Baichuan 2                          | [@lenml/baichuan2](./packages/baichuan2) |
+| `chatglm3`              | ChatGLM 3                           | [@lenml/chatglm3](./packages/chatglm3)   |
+| `command_r_plus`        | Command-R-Plus                      | [@lenml/command_r_plus](./packages/command_r_plus) |
+| `internlm2`             | InternLM 2                          | [@lenml/internlm2](./packages/internlm2) |
 | `qwen1_5`               | Qwen 1.5                            | [@lenml/qwen1_5](./packages/qwen1_5)     |
+| `yi`                    | Yi                                  | [@lenml/yi](./packages/yi)               |
 | `text_davinci002`       | Text-Davinci-002                    | [@lenml/text_davinci002](./packages/text_davinci002) |
 | `text_davinci003`       | Text-Davinci-003                    | [@lenml/text_davinci003](./packages/text_davinci003) |
 | `text_embedding_ada002` | Text-Embedding-Ada-002              | [@lenml/text_embedding_ada002](./packages/text_embedding_ada002) |
-| `yi`                    | Yi                                  | [@lenml/yi](./packages/yi)               |
 
 In addition to the pre-packaged models listed above, you can also utilize the interfaces in @lenml/tokenizers to load models independently.
 
