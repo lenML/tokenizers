@@ -1,0 +1,82 @@
+[
+  {
+    "name": "claude1",
+    "globalName": "Claude1Tokenizer"
+  },
+  {
+    "name": "claude",
+    "globalName": "ClaudeTokenizer"
+  },
+  {
+    "name": "gpt3",
+    "globalName": "GPT3Tokenizer"
+  },
+  {
+    "name": "gpt4",
+    "globalName": "GPT4Tokenizer"
+  },
+  {
+    "name": "llama2",
+    "globalName": "Llama2Tokenizer"
+  },
+  {
+    "name": "llama3",
+    "globalName": "Llama3Tokenizer"
+  },
+  {
+    "name": "gpt35turbo",
+    "globalName": "GPT35TurboTokenizer"
+  },
+  {
+    "name": "gpt35turbo16k",
+    "globalName": "GPT35Turbo16kTokenizer"
+  },
+  {
+    "name": "gpt2",
+    "globalName": "GPT2Tokenizer"
+  },
+  {
+    "name": "text_davinci002",
+    "globalName": "TextDavinci002Tokenizer"
+  },
+  {
+    "name": "text_davinci003",
+    "globalName": "TextDavinci003Tokenizer"
+  },
+  {
+    "name": "text_embedding_ada002",
+    "globalName": "TextEmbeddingAda002Tokenizer"
+  },
+  {
+    "name": "baichuan2",
+    "globalName": "Baichuan2Tokenizer"
+  },
+  {
+    "name": "chatglm3",
+    "globalName": "ChatGLM3Tokenizer"
+  },
+  {
+    "name": "internlm2",
+    "globalName": "InternLM2Tokenizer"
+  },
+  {
+    "name": "yi",
+    "globalName": "YiTokenizer"
+  },
+  {
+    "name": "gemma",
+    "globalName": "GemmaTokenizer"
+  },
+  {
+    "name": "command_r_plus",
+    "globalName": "CommandRPlusTokenizer"
+  },
+  {
+    "name": "yi",
+    "globalName": "YITokenizer"
+  },
+  {
+    "name": "qwen1_5",
+    "globalName": "Qwen1_5Tokenizer"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "name": "tokenizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pkg:install": "pnpm --recursive install",
+    "pkg:build": "pnpm --recursive build",
+    "pkg:publish": "node ./scripts/smart_publish.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "semver": "^7.6.0"
+  }
+}
