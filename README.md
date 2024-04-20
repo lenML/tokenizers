@@ -37,6 +37,48 @@ Below is a table showcasing all available packages, the models they support, and
 
 In addition to the pre-packaged models listed above, you can also utilize the interfaces in @lenml/tokenizers to load models independently.
 
+# Usage
+
+## from json
+```ts
+import { TokenizerLoader } from "@lenml/tokenizers";
+const tokenizer = await TokenizerLoader.fromPreTrained({
+    tokenizerJSON: { /* ... */ },
+    tokenizerConfig: { /* ... */ }
+});
+```
+
+## from urls
+```ts
+import { TokenizerLoader } from "@lenml/tokenizers";
+const tokenizer = await TokenizerLoader.fromPreTrainedUrls({
+    tokenizerJSON: "https://huggingface.co/HuggingFaceH4/zephyr-7b-gemma-v0.1/resolve/main/tokenizer.json?download=true",
+    tokenizerConfig: "https://huggingface.co/HuggingFaceH4/zephyr-7b-gemma-v0.1/resolve/main/tokenizer_config.json?download=true"
+});
+```
+
+## from pre-packaged tokenizer
+```ts
+import { fromPreTrained } from "@lenml/tokenizer-llama3";
+const tokenizer = await fromPreTrained();
+```
+
+## tokenizer api
+```ts
+console.log(
+    "encode() => ",
+    tokenizer.encode("Hello, my dog is cute", null, {
+        add_special_tokens: true,
+    })
+);
+console.log(
+    "_encode_text() => ",
+    tokenizer._encode_text("Hello, my dog is cute")
+);
+```
+
+> fully tokenizer api: [transformer.js tokenizers document](https://huggingface.co/docs/transformers.js/api/tokenizers)
+
 # About `tokenizers`
 
 For more information, refer to the [readme](./packages/tokenizers/src/tokenizers/readme.md) within the `tokenizers` package source.
