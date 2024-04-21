@@ -4,7 +4,7 @@ tokenizers
 > Based on `transformers.js`
 
 # When should I use this instead of transformers.js?
-Firstly, the interface and the actual code of the Tokenizer object are completely identical to those in transformers.js. However, when loading a tokenizer with this library, you're allowed to create your model directly from a JSON object without the need for internet access, relying on Hugging Face (hf) servers, or local files.
+Firstly, the interface and the actual code of the Tokenizer object are completely identical to those in transformers.js. However, when loading a tokenizer with this library, you're allowed to create your model directly from a JSON object without the need for internet access, and without relying on Hugging Face (hf) servers, or local files.
 
 Therefore, this library becomes more convenient when you need to operate offline and only require the use of a tokenizer without the need for ONNX models.
 
