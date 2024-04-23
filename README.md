@@ -79,10 +79,6 @@ console.log(
 
 > fully tokenizer api: [transformer.js tokenizers document](https://huggingface.co/docs/transformers.js/api/tokenizers)
 
-# About `tokenizers`
-
-For more information, refer to the [readme](./packages/tokenizers/src/tokenizers/readme.md) within the `tokenizers` package source.
-
 # License
 
 Apache-2.0

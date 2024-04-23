@@ -1,6 +1,6 @@
 {
   "name": "@lenml/tokenizers",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "source": "src/main.ts",
   "main": "dist/main.js",
