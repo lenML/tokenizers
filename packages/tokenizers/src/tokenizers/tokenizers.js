@@ -2683,7 +2683,7 @@ export class PreTrainedTokenizer extends Callable {
    * @param {boolean} [options.add_special_tokens=true] Whether or not to add the special tokens associated with the corresponding model.
    * @param {boolean} [options.truncation=null] Whether to truncate the input sequences.
    * @param {number} [options.max_length=null] Maximum length of the returned list and optionally padding length.
-   * @param {boolean} [options.return_tensor=true] Whether to return the results as Tensors or arrays.
+   * @param {boolean} [options.return_tensor=false] Whether to return the results as Tensors or arrays.
    * @returns {BatchEncoding} Object to be passed to the model.
    */
   _call(
@@ -2697,7 +2697,7 @@ export class PreTrainedTokenizer extends Callable {
       padding = false,
       truncation = null,
       max_length = null,
-      return_tensor = true, // Different to HF
+      return_tensor = false,
     } = {}
   ) {
     const isBatched = Array.isArray(text);
@@ -3078,7 +3078,7 @@ export class PreTrainedTokenizer extends Callable {
    * @param {boolean} [options.truncation=false] Whether to truncate sequences to the maximum length. Has no effect if tokenize is false.
    * @param {number} [options.max_length=null] Maximum length (in tokens) to use for padding or truncation. Has no effect if tokenize is false.
    * If not specified, the tokenizer's `max_length` attribute will be used as a default.
-   * @param {boolean} [options.return_tensor=true] Whether to return the output as a Tensor or an Array. Has no effect if tokenize is false.
+   * @param {boolean} [options.return_tensor=false] Whether to return the output as a Tensor or an Array. Has no effect if tokenize is false.
    * @param {Object} [options.tokenizer_kwargs={}] Additional options to pass to the tokenizer.
    * @returns {string | Tensor | number[]| number[][]} The tokenized output.
    */
@@ -3091,7 +3091,7 @@ export class PreTrainedTokenizer extends Callable {
       padding = false,
       truncation = false,
       max_length = null,
-      return_tensor = true,
+      return_tensor = false,
       tokenizer_kwargs = {},
       ...kwargs
     } = {}
