@@ -4,8 +4,6 @@ import {
 } from "./tokenizers/tokenizers";
 import { NSTokenizerConfig, NSTokenizerJSON } from "./types";
 
-type AnyDict = Record<string, any>;
-
 interface ITokenizerModelJsonData {
   tokenizerJSON: Partial<NSTokenizerJSON.Root>;
   tokenizerConfig: Partial<NSTokenizerConfig.Root>;
@@ -16,6 +14,13 @@ interface ITokenizerModelUrls {
 }
 
 export class TokenizerLoader {
+  /**
+   * Creates a pre-trained tokenizer from the provided model data.
+   *
+   * @param {ITokenizerModelJsonData} model - The model data containing the tokenizer JSON and configuration.
+   * @return {Promise<PreTrainedTokenizer>} A promise that resolves to the pre-trained tokenizer.
+   * @throws {Error} If the tokenizer JSON or configuration is missing.
+   */
   static async fromPreTrained(
     model: ITokenizerModelJsonData
   ): Promise<PreTrainedTokenizer> {
@@ -41,13 +46,25 @@ export class TokenizerLoader {
     return new cls(tokenizerJSON, tokenizerConfig);
   }
 
+  /**
+   * Creates a pre-trained tokenizer from the provided model URLs.
+   *
+   * @param {ITokenizerModelUrls} model - The model URLs containing the tokenizer JSON and configuration.
+   * @param {Object} [options] - Optional parameters.
+   * @param {any} [options.fetch] - The fetch function to use for making HTTP requests. Defaults to global.fetch.
+   * @param {Partial<ITokenizerModelJsonData>} [options.tokenizerJSON] - Additional tokenizer JSON data to merge with the fetched data.
+   * @param {Partial<ITokenizerModelJsonData>} [options.tokenizerConfig] - Additional tokenizer configuration data to merge with the fetched data.
+   * @return {Promise<PreTrainedTokenizer>} A promise that resolves to the pre-trained tokenizer.
+   */
   static async fromPreTrainedUrls(
     model: ITokenizerModelUrls,
     options?: {
       fetch?: any;
     } & Partial<ITokenizerModelJsonData>
   ) {
-    const fetch = (options?.fetch as typeof global.fetch) ?? globalThis.fetch;
+    const fetch =
+      (options?.fetch as typeof global.fetch) ??
+      globalThis.fetch.bind(globalThis);
     const [tokenizerJSON, tokenizerConfig] = await Promise.all([
       fetch(model.tokenizerJSON).then((res) => res.json()),
       fetch(model.tokenizerConfig).then((res) => res.json()),

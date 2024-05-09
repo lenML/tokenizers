@@ -1,8 +1,8 @@
 import { TokenizerLoader, tokenizers } from "./src/main";
 
+// model download from huggingface
 import * as tokenizerJSON from "./models/llama3/tokenizer.json";
 import * as tokenizerConfig from "./models/llama3/tokenizer_config.json";
-
 import * as tokenizerJSON2 from "./models/claude-v1-tokenization.json";
 
 const main = async () => {

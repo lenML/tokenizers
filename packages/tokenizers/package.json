@@ -1,7 +1,7 @@
 {
   "name": "@lenml/tokenizers",
-  "version": "1.0.2",
-  "description": "",
+  "version": "1.0.3",
+  "description": "a lightweight no-dependency fork of transformers.js (only tokenizers)",
   "source": "src/main.ts",
   "main": "dist/main.js",
   "module": "dist/main.mjs",
@@ -35,7 +35,15 @@
     "llama3",
     "chatgpt",
     "mistral",
-    "tokenizer"
+    "tokenizer",
+    "transformers",
+    "transformers.js",
+    "gpt4",
+    "gpt3.5",
+    "vicuna",
+    "chatglm",
+    "baichuan",
+    "qwen"
   ],
   "license": "Apache-2.0",
   "publishConfig": {

@@ -79,6 +79,24 @@ console.log(
 
 > fully tokenizer api: [transformer.js tokenizers document](https://huggingface.co/docs/transformers.js/api/tokenizers)
 
+## get lightweight `transformers.tokenizers`
+In the `@lenml/tokenizers` package, you can get a lightweight no-dependency implementation of tokenizers:
+
+> Since all dependencies related to huggingface have been removed in this library, although the implementation is the same, it is not possible to load models using the form `hf_user/repo`.
+
+```ts
+import { tokenizers } from "@lenml/tokenizers";
+
+const {
+    CLIPTokenizer,
+    AutoTokenizer,
+    CohereTokenizer,
+    VitsTokenizer,
+    WhisperTokenizer,
+    // ...
+} = tokenizers;
+```
+
 # License
 
 Apache-2.0
