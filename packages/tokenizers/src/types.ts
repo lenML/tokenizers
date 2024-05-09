@@ -26,7 +26,7 @@ export type FromPreTrainedFn<
   // TODO: types
   tokenizerJSON?: Partial<NSTokenizerJSON.Root>;
   tokenizerConfig?: Partial<NSTokenizerConfig.Root>;
-}) => Promise<M>;
+}) => M;
 
 export namespace NSTokenizerConfig {
   // TODO full types

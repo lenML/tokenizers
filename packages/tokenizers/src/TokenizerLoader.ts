@@ -18,12 +18,10 @@ export class TokenizerLoader {
    * Creates a pre-trained tokenizer from the provided model data.
    *
    * @param {ITokenizerModelJsonData} model - The model data containing the tokenizer JSON and configuration.
-   * @return {Promise<PreTrainedTokenizer>} A promise that resolves to the pre-trained tokenizer.
+   * @return {PreTrainedTokenizer} pre-trained tokenizer.
    * @throws {Error} If the tokenizer JSON or configuration is missing.
    */
-  static async fromPreTrained(
-    model: ITokenizerModelJsonData
-  ): Promise<PreTrainedTokenizer> {
+  static fromPreTrained(model: ITokenizerModelJsonData): PreTrainedTokenizer {
     const { tokenizerJSON, tokenizerConfig } = model;
     if (!tokenizerJSON) {
       throw new Error("tokenizerJSON is required.");
