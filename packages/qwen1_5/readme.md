@@ -9,7 +9,7 @@ a tokenizer.
 ```ts
 import { fromPreTrained } from "@lenml/tokenizer-qwen1_5";
 
-const tokenizer = await fromPreTrained();
+const tokenizer = fromPreTrained();
 console.log(
     "encode()",
     tokenizer.encode("Hello, my dog is cute", null, {
