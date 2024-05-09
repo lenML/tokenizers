@@ -11,7 +11,7 @@ import {
  */
 export const fromPreTrained: FromPreTrainedFn<
   TokenizerClassNameMapping<"CodexTokenizer">
-> = async (params) => {
+> = (params) => {
   return TokenizerLoader.fromPreTrained({
     tokenizerJSON: {
       ...tokenizerJSON,

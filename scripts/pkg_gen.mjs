@@ -82,6 +82,8 @@ const main = () => {
       json.name = package_name;
       json.keywords ||= [];
       json.keywords.push(name);
+
+      json.description = `${name} tokenizer for NodeJS/Browser`;
     });
 
     // replace tsup.config.ts 中的 "AutoTokenizer" 为 globalName
