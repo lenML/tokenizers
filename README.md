@@ -42,7 +42,7 @@ In addition to the pre-packaged models listed above, you can also utilize the in
 ## from json
 ```ts
 import { TokenizerLoader } from "@lenml/tokenizers";
-const tokenizer = await TokenizerLoader.fromPreTrained({
+const tokenizer = TokenizerLoader.fromPreTrained({
     tokenizerJSON: { /* ... */ },
     tokenizerConfig: { /* ... */ }
 });
@@ -60,7 +60,35 @@ const tokenizer = await TokenizerLoader.fromPreTrainedUrls({
 ## from pre-packaged tokenizer
 ```ts
 import { fromPreTrained } from "@lenml/tokenizer-llama3";
-const tokenizer = await fromPreTrained();
+const tokenizer = fromPreTrained();
+```
+
+## chat template
+```ts
+const tokens = tokenizer.apply_chat_template(
+  [
+    {
+      role: "system",
+      content: "You are helpful assistant.",
+    },
+    {
+      role: "user",
+      content: "Hello, how are you?",
+    },
+  ]
+) as number[];
+
+const chat_content = tokenizer.decode(tokens);
+
+console.log(chat_content);
+```
+output:
+```
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You are helpful assistant.<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Hello, how are you?<|eot_id|><|start_header_id|>assistant<|end_header_id|>
 ```
 
 ## tokenizer api
