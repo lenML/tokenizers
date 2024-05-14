@@ -14,11 +14,11 @@ const getRemoteVersion = (pkgName) => {
 function publishIfNeeded(dirPath) {
   const fullPath = path.join(dirPath, "package.json");
   if (!fs.existsSync(fullPath)) {
-    console.warn(`路径 ${fullPath} 中未找到 package.json 文件，跳过。`);
+    console.warn(`🔺路径 ${fullPath} 中未找到 package.json 文件，跳过。`);
     return;
   }
   const publish = () => {
-    execSync(`cd ${dirPath} && pnpm publish`, {
+    execSync(`cd ${dirPath} && pnpm install && pnpm publish`, {
       stdio: "inherit",
     });
     // console.log(`[DEBUG] publish emit: ${fullPath}`);
@@ -28,12 +28,15 @@ function publishIfNeeded(dirPath) {
 
   const pkg = require(fullPath);
   try {
+    console.log(`📗 检查 ${pkg.name} 的远程版本...`);
     const remoteVersion = getRemoteVersion(pkg.name);
     if (semver.gt(pkg.version, remoteVersion)) {
-      console.log(`${pkg.name} 的本地版本高于远程版本，开始打包并发布...`);
+      console.log(`🚀 ${pkg.name} 的本地版本高于远程版本，开始打包并发布...`);
       publish();
     } else {
-      console.log(`${pkg.name} 的远程版本不低于本地版本，不执行打包和发布。`);
+      console.log(
+        `✅ ${pkg.name} 的远程版本不低于本地版本，不执行打包和发布。`
+      );
     }
   } catch (error) {
     if (
@@ -41,12 +44,12 @@ function publishIfNeeded(dirPath) {
       error.message.includes("404")
     ) {
       console.warn(
-        `包 ${pkg.name} 未在 npm registry 中注册，开始打包并发布...`
+        `❗ 包 ${pkg.name} 未在 npm registry 中注册，开始打包并发布...`
       );
       publish();
       return;
     }
-    console.error(`执行 ${pkg.name} 的脚本时出现错误:`, error.message);
+    console.error(`⚠️ 执行 ${pkg.name} 的脚本时出现错误:`, error.message);
   }
 }
 

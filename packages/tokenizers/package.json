@@ -1,6 +1,6 @@
 {
   "name": "@lenml/tokenizers",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "a lightweight no-dependency fork of transformers.js (only tokenizers)",
   "source": "src/main.ts",
   "main": "dist/main.js",
@@ -39,6 +39,7 @@
     "transformers",
     "transformers.js",
     "gpt4",
+    "gpt4o",
     "gpt3.5",
     "vicuna",
     "chatglm",

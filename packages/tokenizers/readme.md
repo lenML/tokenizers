@@ -17,6 +17,7 @@ Below is a table showcasing all available packages, the models they support, and
 | `tokenizers` (core)     | N/A (Core Tokenization Library)     | [@lenml/tokenizers](./packages/tokenizers) |
 | `llama2`                | Llama 2 (mistral, zephyr, vicuna)| [@lenml/tokenizer-llama2](./packages/llama2)       |
 | `llama3`                | Llama 3                             | [@lenml/tokenizer-llama3](./packages/llama3)       |
+| `gpt4o`                  | GPT-4o                               | [@lenml/tokenizer-gpt4o](./packages/gpt4o)           |
 | `gpt4`                  | GPT-4                               | [@lenml/tokenizer-gpt4](./packages/gpt4)           |
 | `gpt35turbo`            | GPT-3.5 Turbo                       | [@lenml/tokenizer-gpt35turbo](./packages/gpt35turbo) |
 | `gpt35turbo16k`         | GPT-3.5 Turbo 16k                   | [@lenml/tokenizer-gpt35turbo16k](./packages/gpt35turbo16k) |
@@ -39,7 +40,30 @@ In addition to the pre-packaged models listed above, you can also utilize the in
 
 # Usage
 
-## from json
+## install
+
+### npm/yarn/pnpm
+```
+npm install @lenml/tokenizers
+```
+
+### ESM
+```html
+<script type="importmap">
+  {
+    "imports": {
+      "@lenml/tokenizers": "https://www.unpkg.com/@lenml/tokenizers@latest/dist/main.mjs"
+    }
+  }
+</script>
+<script type="module">
+  import { TokenizerLoader, tokenizers } from "@lenml/tokenizers";
+  console.log('@lenml/tokenizers: ',tokenizers);
+</script>
+```
+
+## load tokenizer
+### from json
 ```ts
 import { TokenizerLoader } from "@lenml/tokenizers";
 const tokenizer = TokenizerLoader.fromPreTrained({
@@ -48,7 +72,7 @@ const tokenizer = TokenizerLoader.fromPreTrained({
 });
 ```
 
-## from urls
+### from urls
 ```ts
 import { TokenizerLoader } from "@lenml/tokenizers";
 const tokenizer = await TokenizerLoader.fromPreTrainedUrls({
@@ -57,7 +81,7 @@ const tokenizer = await TokenizerLoader.fromPreTrainedUrls({
 });
 ```
 
-## from pre-packaged tokenizer
+### from pre-packaged tokenizer
 ```ts
 import { fromPreTrained } from "@lenml/tokenizer-llama3";
 const tokenizer = fromPreTrained();
