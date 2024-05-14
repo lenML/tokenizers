@@ -52,6 +52,7 @@ const repos = {
 
 const configs = [
   // from https://gist.github.com/xenova/a452a6474428de0182b17605a98631ee
+  repos.Xenova("gpt-4o", "gpt4o"),
   repos.Xenova("gpt-4", "gpt4"),
   repos.Xenova("gpt-3.5-turbo", "gpt35turbo"),
   repos.Xenova("gpt-3.5-turbo-16k", "gpt35turbo16k"),

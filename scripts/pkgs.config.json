@@ -78,5 +78,9 @@
   {
     "name": "qwen1_5",
     "globalName": "Qwen1_5Tokenizer"
+  },
+  {
+    "name": "gpt4o",
+    "globalName": "GPT4OmniTokenizer"
   }
 ]
