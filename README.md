@@ -2,6 +2,11 @@
 
 This is the central repository for the `@lenml/tokenizers` project, which provides tokenization libraries for various machine learning models.
 
+# Tokenizer Arena / Playground
+Explore our Tokenizer Arena / Playground! This interactive platform allows you to utilize various tokenizers from our @lenml/tokenizers library. Easily load and compare different tokenizers, seeing how they perform with diverse text inputs. Whether you're a professional developer or a machine learning enthusiast, this playground is perfect for gaining insights into the tokenization process of different models and experimenting with their functionalities.
+
+[![screenshot](./assets/playground.jpg)](https://lenml.github.io/tokenizers-arena/#/side-by-side)
+
 
 # When should I use this instead of transformers.js?
 Firstly, the interface and the actual code of the Tokenizer object are completely identical to those in transformers.js. However, when loading a tokenizer with this library, you're allowed to create your model directly from a JSON object without the need for internet access, and without relying on Hugging Face (hf) servers, or local files.
