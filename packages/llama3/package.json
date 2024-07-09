@@ -1,6 +1,6 @@
 {
   "name": "@lenml/tokenizer-llama3",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "llama3 tokenizer for NodeJS/Browser",
   "source": "src/main.ts",
   "main": "dist/main.js",

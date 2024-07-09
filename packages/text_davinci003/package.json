@@ -1,6 +1,6 @@
 {
   "name": "@lenml/tokenizer-text_davinci003",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "text_davinci003 tokenizer for NodeJS/Browser",
   "source": "src/main.ts",
   "main": "dist/main.js",
