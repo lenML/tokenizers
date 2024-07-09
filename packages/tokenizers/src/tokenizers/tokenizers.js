@@ -4574,6 +4574,8 @@ export class AutoTokenizer {
 
     // Base case:
     PreTrainedTokenizer,
+
+    ClaudeTokenizer: PreTrainedTokenizer
   };
 
   /**
