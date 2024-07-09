@@ -4,6 +4,7 @@ import {
   TokenizerLoader,
   TokenizerClassNameMapping,
   FromPreTrainedFn,
+  tokenizers,
 } from "@lenml/tokenizers";
 
 /**
@@ -23,3 +24,5 @@ export const fromPreTrained: FromPreTrainedFn<
     },
   }) as any;
 };
+
+export { tokenizerJSON, tokenizerConfig, tokenizers, TokenizerLoader };
