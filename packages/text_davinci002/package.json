@@ -1,6 +1,6 @@
 {
   "name": "@lenml/tokenizer-text_davinci002",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "text_davinci002 tokenizer for NodeJS/Browser",
   "source": "src/main.ts",
   "main": "dist/main.js",
@@ -17,13 +17,18 @@
     "./src/main.ts": "./src/main.ts",
     "./src/data": "./src/data.ts",
     "./src/data.ts": "./src/data.ts",
+    "./models/tokenizer": "./models/tokenizer.json",
+    "./models/tokenizer.json": "./models/tokenizer.json",
+    "./models/tokenizer_config": "./models/tokenizer_config.json",
+    "./models/tokenizer_config.json": "./models/tokenizer_config.json",
     "./dist/main.global.js": "./dist/main.global.js"
   },
   "files": [
     "dist/**.js*",
     "dist/**.mjs*",
     "dist/**.ts",
-    "src/**.ts"
+    "src/**.ts",
+    "models/**.json"
   ],
   "scripts": {
     "build": "tsup",
