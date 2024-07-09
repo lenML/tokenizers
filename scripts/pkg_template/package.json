@@ -18,7 +18,8 @@
   "files": [
     "dist/**.js*",
     "dist/**.mjs*",
-    "dist/**.ts"
+    "dist/**.ts",
+    "src/**.ts"
   ],
   "scripts": {
     "build": "tsup",
