@@ -18,7 +18,7 @@ function publishIfNeeded(dirPath) {
     return;
   }
   const publish = () => {
-    execSync(`cd ${dirPath} && pnpm install && pnpm publish`, {
+    execSync(`cd ${dirPath} && pnpm install && pnpm publish --no-git-checks`, {
       stdio: "inherit",
     });
     // console.log(`[DEBUG] publish emit: ${fullPath}`);
