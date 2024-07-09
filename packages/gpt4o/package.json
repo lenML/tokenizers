@@ -1,6 +1,6 @@
 {
   "name": "@lenml/tokenizer-gpt4o",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "gpt4o tokenizer for NodeJS/Browser",
   "source": "src/main.ts",
   "main": "dist/main.js",
@@ -18,7 +18,8 @@
   "files": [
     "dist/**.js*",
     "dist/**.mjs*",
-    "dist/**.ts"
+    "dist/**.ts",
+    "src/**.ts"
   ],
   "scripts": {
     "build": "tsup",
