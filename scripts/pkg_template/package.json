@@ -1,6 +1,6 @@
 {
   "name": "@lenml/tokenizers",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "",
   "source": "src/main.ts",
   "main": "dist/main.js",
@@ -13,6 +13,8 @@
       "require": "./dist/main.js",
       "types": "./dist/main.d.ts"
     },
+    "./src/main": "./src/main.ts",
+    "./src/main.ts": "./src/main.ts",
     "./dist/main.global.js": "./dist/main.global.js"
   },
   "files": [
