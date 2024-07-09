@@ -154,6 +154,27 @@ const {
 } = tokenizers;
 ```
 
+## Manual Packaging
+
+In some cases, you may need to use an older version of Node.js, so you might not be able to use pre-packaged packages. In such situations, you can manually package starting from the .ts files.
+
+Here's a simple example:
+
+```ts
+import {
+  tokenizerJSON,
+  tokenizerConfig,
+} from "@lenml/tokenizer-claude/src/data.ts";
+import { TokenizerLoader } from "@lenml/tokenizers/src/main.ts";
+
+export const tokenizer = TokenizerLoader.fromPreTrained({
+  tokenizerConfig,
+  tokenizerJSON,
+});
+```
+
+As shown above, by importing from `*.ts` files and correctly configuring your bundling tool, your project will be bundled from the TypeScript source code instead of using the pre-packaged `dist/main.js` script.
+
 # License
 
 Apache-2.0
