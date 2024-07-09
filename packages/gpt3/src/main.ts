@@ -1,5 +1,4 @@
-import tokenizerJSON from "../models/tokenizer.json";
-import tokenizerConfig from "../models/tokenizer_config.json";
+import { tokenizerJSON, tokenizerConfig } from "./data";
 import {
   TokenizerLoader,
   TokenizerClassNameMapping,

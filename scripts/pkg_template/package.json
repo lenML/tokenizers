@@ -15,6 +15,8 @@
     },
     "./src/main": "./src/main.ts",
     "./src/main.ts": "./src/main.ts",
+    "./src/data": "./src/data.ts",
+    "./src/data.ts": "./src/data.ts",
     "./dist/main.global.js": "./dist/main.global.js"
   },
   "files": [

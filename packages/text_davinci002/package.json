@@ -1,6 +1,6 @@
 {
   "name": "@lenml/tokenizer-text_davinci002",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "text_davinci002 tokenizer for NodeJS/Browser",
   "source": "src/main.ts",
   "main": "dist/main.js",
@@ -13,6 +13,10 @@
       "require": "./dist/main.js",
       "types": "./dist/main.d.ts"
     },
+    "./src/main": "./src/main.ts",
+    "./src/main.ts": "./src/main.ts",
+    "./src/data": "./src/data.ts",
+    "./src/data.ts": "./src/data.ts",
     "./dist/main.global.js": "./dist/main.global.js"
   },
   "files": [
