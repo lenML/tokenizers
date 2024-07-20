@@ -5,6 +5,8 @@ This is the central repository for the `@lenml/tokenizers` project, which provid
 # Tokenizer Arena / Playground
 Explore our Tokenizer Arena / Playground! This interactive platform allows you to utilize various tokenizers from our @lenml/tokenizers library. Easily load and compare different tokenizers, seeing how they perform with diverse text inputs. Whether you're a professional developer or a machine learning enthusiast, this playground is perfect for gaining insights into the tokenization process of different models and experimenting with their functionalities.
 
+[click to arena page](https://lenml.github.io/tokenizers-arena/#/side-by-side)
+
 [![screenshot](./assets/playground.jpg)](https://lenml.github.io/tokenizers-arena/#/side-by-side)
 
 
