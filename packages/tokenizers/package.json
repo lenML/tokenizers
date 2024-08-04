@@ -1,6 +1,6 @@
 {
   "name": "@lenml/tokenizers",
-  "version": "1.0.9",
+  "version": "1.1.1",
   "description": "a lightweight no-dependency fork of transformers.js (only tokenizers)",
   "source": "src/main.ts",
   "main": "dist/main.js",
