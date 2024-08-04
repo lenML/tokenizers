@@ -19,29 +19,31 @@ Therefore, this library becomes more convenient when you need to operate offline
 
 Below is a table showcasing all available packages, the models they support, and their respective locations within the repository:
 
-| Package Name            | Supported Model(s)                  | Repository Link                         |
-|-------------------------|-------------------------------------|-----------------------------------------|
-| `tokenizers` (core)     | N/A (Core Tokenization Library)     | [@lenml/tokenizers](./packages/tokenizers) |
-| `llama2`                | Llama 2 (mistral, zephyr, vicuna)| [@lenml/tokenizer-llama2](./packages/llama2)       |
-| `llama3`                | Llama 3                             | [@lenml/tokenizer-llama3](./packages/llama3)       |
-| `gpt4o`                  | GPT-4o                               | [@lenml/tokenizer-gpt4o](./packages/gpt4o)           |
-| `gpt4`                  | GPT-4                               | [@lenml/tokenizer-gpt4](./packages/gpt4)           |
-| `gpt35turbo`            | GPT-3.5 Turbo                       | [@lenml/tokenizer-gpt35turbo](./packages/gpt35turbo) |
-| `gpt35turbo16k`         | GPT-3.5 Turbo 16k                   | [@lenml/tokenizer-gpt35turbo16k](./packages/gpt35turbo16k) |
-| `gpt3`                  | GPT-3                               | [@lenml/tokenizer-gpt3](./packages/gpt3)           |
-| `gemma`                 | Gemma                               | [@lenml/tokenizer-gemma](./packages/gemma)         |
-| `claude`                | Claude 2/3                          | [@lenml/tokenizer-claude](./packages/claude)       |
-| `claude1`               | Claude 1                            | [@lenml/tokenizer-claude1](./packages/claude1)     |
-| `gpt2`                  | GPT-2                               | [@lenml/tokenizer-gpt2](./packages/gpt2)           |
-| `baichuan2`             | Baichuan 2                          | [@lenml/tokenizer-baichuan2](./packages/baichuan2) |
-| `chatglm3`              | ChatGLM 3                           | [@lenml/tokenizer-chatglm3](./packages/chatglm3)   |
-| `command_r_plus`        | Command-R-Plus                      | [@lenml/tokenizer-command_r_plus](./packages/command_r_plus) |
-| `internlm2`             | InternLM 2                          | [@lenml/tokenizer-internlm2](./packages/internlm2) |
-| `qwen1_5`               | Qwen 1.5                            | [@lenml/tokenizer-qwen1_5](./packages/qwen1_5)     |
-| `yi`                    | Yi                                  | [@lenml/tokenizer-yi](./packages/yi)               |
-| `text_davinci002`       | Text-Davinci-002                    | [@lenml/tokenizer-text_davinci002](./packages/text_davinci002) |
-| `text_davinci003`       | Text-Davinci-003                    | [@lenml/tokenizer-text_davinci003](./packages/text_davinci003) |
-| `text_embedding_ada002` | Text-Embedding-Ada-002              | [@lenml/tokenizer-text_embedding_ada002](./packages/text_embedding_ada002) |
+| Package Name            | Supported Model(s)                  | Repository Link                         | NPM Page                          |
+|-------------------------|-------------------------------------|-----------------------------------------|-----------------------------------|
+| `tokenizers` (core)     | N/A (Core Tokenization Library)     | [@lenml/tokenizers](./packages/tokenizers) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizers.svg)](https://www.npmjs.com/package/@lenml/tokenizers) |
+| `llama3_1`                | Llama 3.1                             | [@lenml/tokenizer-llama3_1](./packages/llama3_1) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-llama3_1.svg)](https://www.npmjs.com/package/@lenml/tokenizer-llama3_1) |
+| `llama2`                | Llama 2 (mistral, zephyr, vicuna)   | [@lenml/tokenizer-llama2](./packages/llama2) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-llama2.svg)](https://www.npmjs.com/package/@lenml/tokenizer-llama2) |
+| `llama3`                | Llama 3                             | [@lenml/tokenizer-llama3](./packages/llama3) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-llama3.svg)](https://www.npmjs.com/package/@lenml/tokenizer-llama3) |
+| `gpt4o`                 | GPT-4o                              | [@lenml/tokenizer-gpt4o](./packages/gpt4o) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-gpt4o.svg)](https://www.npmjs.com/package/@lenml/tokenizer-gpt4o) |
+| `gpt4`                  | GPT-4                               | [@lenml/tokenizer-gpt4](./packages/gpt4) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-gpt4.svg)](https://www.npmjs.com/package/@lenml/tokenizer-gpt4) |
+| `gpt35turbo`            | GPT-3.5 Turbo                       | [@lenml/tokenizer-gpt35turbo](./packages/gpt35turbo) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-gpt35turbo.svg)](https://www.npmjs.com/package/@lenml/tokenizer-gpt35turbo) |
+| `gpt35turbo16k`         | GPT-3.5 Turbo 16k                   | [@lenml/tokenizer-gpt35turbo16k](./packages/gpt35turbo16k) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-gpt35turbo16k.svg)](https://www.npmjs.com/package/@lenml/tokenizer-gpt35turbo16k) |
+| `gpt3`                  | GPT-3                               | [@lenml/tokenizer-gpt3](./packages/gpt3) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-gpt3.svg)](https://www.npmjs.com/package/@lenml/tokenizer-gpt3) |
+| `gemma`                 | Gemma                               | [@lenml/tokenizer-gemma](./packages/gemma) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-gemma.svg)](https://www.npmjs.com/package/@lenml/tokenizer-gemma) |
+| `claude`                | Claude 2/3                          | [@lenml/tokenizer-claude](./packages/claude) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-claude.svg)](https://www.npmjs.com/package/@lenml/tokenizer-claude) |
+| `claude1`               | Claude 1                            | [@lenml/tokenizer-claude1](./packages/claude1) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-claude1.svg)](https://www.npmjs.com/package/@lenml/tokenizer-claude1) |
+| `gpt2`                  | GPT-2                               | [@lenml/tokenizer-gpt2](./packages/gpt2) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-gpt2.svg)](https://www.npmjs.com/package/@lenml/tokenizer-gpt2) |
+| `baichuan2`             | Baichuan 2                          | [@lenml/tokenizer-baichuan2](./packages/baichuan2) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-baichuan2.svg)](https://www.npmjs.com/package/@lenml/tokenizer-baichuan2) |
+| `chatglm3`              | ChatGLM 3                           | [@lenml/tokenizer-chatglm3](./packages/chatglm3) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-chatglm3.svg)](https://www.npmjs.com/package/@lenml/tokenizer-chatglm3) |
+| `command_r_plus`        | Command-R-Plus                      | [@lenml/tokenizer-command_r_plus](./packages/command_r_plus) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-command_r_plus.svg)](https://www.npmjs.com/package/@lenml/tokenizer-command_r_plus) |
+| `internlm2`             | InternLM 2                          | [@lenml/tokenizer-internlm2](./packages/internlm2) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-internlm2.svg)](https://www.npmjs.com/package/@lenml/tokenizer-internlm2) |
+| `qwen1_5`               | Qwen 1.5                            | [@lenml/tokenizer-qwen1_5](./packages/qwen1_5) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-qwen1_5.svg)](https://www.npmjs.com/package/@lenml/tokenizer-qwen1_5) |
+| `yi`                    | Yi                                  | [@lenml/tokenizer-yi](./packages/yi) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-yi.svg)](https://www.npmjs.com/package/@lenml/tokenizer-yi) |
+| `text_davinci002`       | Text-Davinci-002                    | [@lenml/tokenizer-text_davinci002](./packages/text_davinci002) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-text_davinci002.svg)](https://www.npmjs.com/package/@lenml/tokenizer-text_davinci002) |
+| `text_davinci003`       | Text-Davinci-003                    | [@lenml/tokenizer-text_davinci003](./packages/text_davinci003) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-text_davinci003.svg)](https://www.npmjs.com/package/@lenml/tokenizer-text_davinci003) |
+| `text_embedding_ada002` | Text-Embedding-Ada-002              | [@lenml/tokenizer-text_embedding_ada002](./packages/text_embedding_ada002) | [![npm](https://img.shields.io/npm/v/@lenml/tokenizer-text_embedding_ada002.svg)](https://www.npmjs.com/package/@lenml/tokenizer-text_embedding_ada002) |
+
 
 In addition to the pre-packaged models listed above, you can also utilize the interfaces in @lenml/tokenizers to load models independently.
 
