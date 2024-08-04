@@ -50,6 +50,10 @@ export class Tensor {
    * @param {[DataType, DataArray, number[]]|[import('onnxruntime-common').Tensor]} args
    */
   constructor(...args) {
+    throw new Error(
+      `You seem to be creating a tensor object. Unfortunately, the '@lenml/tokenizers' library does not support returning any ONNX-related object instances. Please try setting 'return_tensor=false' to avoid this error`
+    );
+
     if (args[0] instanceof ONNXTensor) {
       // Create shallow copy
       Object.assign(this, args[0]);
