@@ -82,5 +82,9 @@
   {
     "name": "gpt4o",
     "globalName": "GPT4OmniTokenizer"
+  },
+  {
+    "name": "llama3_1",
+    "globalName": "Llama3_1Tokenizer"
   }
 ]

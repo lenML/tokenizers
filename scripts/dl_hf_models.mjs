@@ -61,6 +61,8 @@ const configs = [
   repos.Xenova("text-davinci-003", "text_davinci003"),
   repos.Xenova("text-embedding-ada-002", "text_embedding_ada002"),
   repos.Xenova("gpt2", "gpt2"),
+  repos.Xenova("gpt2", "gpt2"),
+  repos.Xenova("llama3-tokenizer-new", "llama3_1"),
   // baichuan-inc/Baichuan2-7B-Chat
   hf_model_repo("baichuan-inc", "Baichuan2-7B-Chat", "baichuan2"),
   // beomi/gemma-mling-7b

@@ -27,6 +27,10 @@ function publishIfNeeded(dirPath) {
   };
 
   const pkg = require(fullPath);
+  if (pkg.publishConfig?.access !== "public") {
+    console.log(`🔒 ${pkg.name} 不是公开包，跳过。`);
+    return;
+  }
   try {
     console.log(`📗 检查 ${pkg.name} 的远程版本...`);
     const remoteVersion = getRemoteVersion(pkg.name);
