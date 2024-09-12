@@ -1,6 +1,6 @@
 {
   "name": "@lenml/tokenizer-chatglm3",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "chatglm3 tokenizer for NodeJS/Browser",
   "source": "src/main.ts",
   "main": "dist/main.js",
