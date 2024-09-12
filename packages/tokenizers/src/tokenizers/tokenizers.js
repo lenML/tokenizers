@@ -941,7 +941,7 @@ class Normalizer extends Callable {
    * Factory method for creating normalizers from config objects.
    * @static
    * @param {Object} config The configuration object for the normalizer.
-   * @returns {Normalizer} A Normalizer object.
+   * @returns {Normalizer | null} A Normalizer object.
    * @throws {Error} If an unknown Normalizer type is specified in the config.
    */
   static fromConfig(config) {
@@ -3720,7 +3720,7 @@ export class WhisperTokenizer extends PreTrainedTokenizer {
   /**
    * Decodes automatic speech recognition (ASR) sequences.
    * @param {Array<{tokens: number[], token_timestamps?: number[], stride: number[]}>} sequences The sequences to decode.
-   * @param {Object} options The options to use for decoding.
+   * @param {Record<string, any>} options The options to use for decoding.
    * @returns {Array<string|{chunks?: undefined|Array<{language: string|null, timestamp: Array<number|null>, text: string}>}>} The decoded sequences.
    */
   _decode_asr(
