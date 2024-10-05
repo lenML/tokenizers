@@ -39,4 +39,24 @@ describe("tokenizers", () => {
     },
     MAX_TEST_EXECUTION_TIME
   );
+
+  it("#5 apply_chat_template()", () => {
+    // https://github.com/xenova/transformers.js/issues/879
+    // https://github.com/lenML/tokenizers/issues/5
+    const tokenizer = loadLlama3_1();
+    const chat = [
+      { role: "user", content: "Hello, how are you?" },
+      {
+        role: "assistant",
+        content: "I'm doing great. How can I help you today?",
+      },
+      {
+        role: "user",
+        content: "I'd like to show off how chat templating works!",
+      },
+    ];
+    // Just test it without error.
+    const tokens = tokenizer.apply_chat_template(chat);
+    expect(tokens).toBeInstanceOf(Array);
+  });
 });

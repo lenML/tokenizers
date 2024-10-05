@@ -184,26 +184,6 @@ export function dot(arr1, arr2) {
 }
 
 /**
- * Get the top k items from an iterable, sorted by descending order
- * @param {any[]|TypedArray} items The items to be sorted
- * @param {number|null} [top_k=0] The number of top items to return (default: 0 = return all)
- * @returns {[number, any][]} The top k items, sorted by descending order
- */
-export function getTopItems(items, top_k = 0) {
-  // if top == 0, return all
-
-  items = Array.from(items)
-    .map((x, i) => [i, x]) // Get indices ([index, score])
-    .sort((a, b) => b[1] - a[1]); // Sort by log probabilities
-
-  if (top_k !== null && top_k > 0) {
-    items = items.slice(0, top_k); // Get top k items
-  }
-
-  return items;
-}
-
-/**
  * Computes the cosine similarity between two arrays.
  *
  * @param {number[]} arr1 The first array.
@@ -362,20 +342,6 @@ class P2FFT {
   }
 
   /**
-   * Completes the spectrum by adding its mirrored negative frequency components.
-   * @param {Float64Array} spectrum The input spectrum.
-   * @returns {void}
-   */
-  completeSpectrum(spectrum) {
-    const size = this._csize;
-    const half = size >>> 1;
-    for (let i = 2; i < half; i += 2) {
-      spectrum[size - i] = spectrum[i];
-      spectrum[size - i + 1] = -spectrum[i + 1];
-    }
-  }
-
-  /**
    * Performs a Fast Fourier Transform (FFT) on the given input data and stores the result in the output buffer.
    *
    * @param {Float64Array} out The output buffer to store the result.
@@ -462,6 +428,7 @@ class P2FFT {
     }
 
     // Loop through steps in decreasing order
+    const table = this.table;
     for (step >>= 2; step >= 2; step >>= 2) {
       len = (size / step) << 1;
       const quarterLen = len >>> 2;
@@ -486,18 +453,18 @@ class P2FFT {
           const Dr = out[D];
           const Di = out[D + 1];
 
-          const tableBr = this.table[k];
-          const tableBi = inv * this.table[k + 1];
+          const tableBr = table[k];
+          const tableBi = inv * table[k + 1];
           const MBr = Br * tableBr - Bi * tableBi;
           const MBi = Br * tableBi + Bi * tableBr;
 
-          const tableCr = this.table[2 * k];
-          const tableCi = inv * this.table[2 * k + 1];
+          const tableCr = table[2 * k];
+          const tableCi = inv * table[2 * k + 1];
           const MCr = Cr * tableCr - Ci * tableCi;
           const MCi = Cr * tableCi + Ci * tableCr;
 
-          const tableDr = this.table[3 * k];
-          const tableDi = inv * this.table[3 * k + 1];
+          const tableDr = table[3 * k];
+          const tableDi = inv * table[3 * k + 1];
           const MDr = Dr * tableDr - Di * tableDi;
           const MDi = Dr * tableDi + Di * tableDr;
 
@@ -637,18 +604,18 @@ class P2FFT {
       }
     }
 
-    // TODO: Optimize once https://github.com/indutny/fft.js/issues/25 is fixed
     // Loop through steps in decreasing order
+    const table = this.table;
     for (step >>= 2; step >= 2; step >>= 2) {
       len = (size / step) << 1;
-      const quarterLen = len >>> 2;
+      const halfLen = len >>> 1;
+      const quarterLen = halfLen >>> 1;
+      const hquarterLen = quarterLen >>> 1;
 
       // Loop through offsets in the data
       for (outOff = 0; outOff < size; outOff += len) {
-        // Full case
-        const limit = outOff + quarterLen - 1;
-        for (let i = outOff, k = 0; i < limit; i += 2, k += step) {
-          const A = i;
+        for (let i = 0, k = 0; i <= hquarterLen; i += 2, k += step) {
+          const A = outOff + i;
           const B = A + quarterLen;
           const C = B + quarterLen;
           const D = C + quarterLen;
@@ -663,26 +630,30 @@ class P2FFT {
           const Dr = out[D];
           const Di = out[D + 1];
 
-          const tableBr = this.table[k];
-          const tableBi = inv * this.table[k + 1];
+          // Middle values
+          const MAr = Ar;
+          const MAi = Ai;
+
+          const tableBr = table[k];
+          const tableBi = inv * table[k + 1];
           const MBr = Br * tableBr - Bi * tableBi;
           const MBi = Br * tableBi + Bi * tableBr;
 
-          const tableCr = this.table[2 * k];
-          const tableCi = inv * this.table[2 * k + 1];
+          const tableCr = table[2 * k];
+          const tableCi = inv * table[2 * k + 1];
           const MCr = Cr * tableCr - Ci * tableCi;
           const MCi = Cr * tableCi + Ci * tableCr;
 
-          const tableDr = this.table[3 * k];
-          const tableDi = inv * this.table[3 * k + 1];
+          const tableDr = table[3 * k];
+          const tableDi = inv * table[3 * k + 1];
           const MDr = Dr * tableDr - Di * tableDi;
           const MDi = Dr * tableDi + Di * tableDr;
 
           // Pre-Final values
-          const T0r = Ar + MCr;
-          const T0i = Ai + MCi;
-          const T1r = Ar - MCr;
-          const T1i = Ai - MCi;
+          const T0r = MAr + MCr;
+          const T0i = MAi + MCi;
+          const T1r = MAr - MCr;
+          const T1i = MAi - MCi;
           const T2r = MBr + MDr;
           const T2i = MBi + MDi;
           const T3r = inv * (MBr - MDr);
@@ -693,12 +664,33 @@ class P2FFT {
           out[A + 1] = T0i + T2i;
           out[B] = T1r + T3i;
           out[B + 1] = T1i - T3r;
-          out[C] = T0r - T2r;
-          out[C + 1] = T0i - T2i;
-          out[D] = T1r - T3i;
-          out[D + 1] = T1i + T3r;
+
+          // Output final middle point
+          if (i === 0) {
+            out[C] = T0r - T2r;
+            out[C + 1] = T0i - T2i;
+            continue;
+          }
+
+          // Do not overwrite ourselves
+          if (i === hquarterLen) continue;
+
+          const SA = outOff + quarterLen - i;
+          const SB = outOff + halfLen - i;
+
+          out[SA] = T1r - inv * T3i;
+          out[SA + 1] = -T1i - inv * T3r;
+          out[SB] = T0r - inv * T2r;
+          out[SB + 1] = -T0i + inv * T2i;
         }
       }
+    }
+
+    // Complete the spectrum by adding its mirrored negative frequency components.
+    const half = size >>> 1;
+    for (let i = 2; i < half; i += 2) {
+      out[size - i] = out[i];
+      out[size - i + 1] = -out[i + 1];
     }
   }
 
@@ -969,4 +961,89 @@ export function bankers_round(x) {
   const r = Math.round(x);
   const br = Math.abs(x) % 1 === 0.5 ? (r % 2 === 0 ? r : r - 1) : r;
   return br;
+}
+
+/**
+ * Measures similarity between two temporal sequences (e.g., input audio and output tokens
+ * to generate token-level timestamps).
+ * @param {number[][]} matrix
+ * @returns {number[][]}
+ */
+export function dynamic_time_warping(matrix) {
+  const output_length = matrix.length;
+  const input_length = matrix[0].length;
+
+  const outputShape = [output_length + 1, input_length + 1];
+
+  const cost = Array.from({ length: outputShape[0] }, () =>
+    Array(outputShape[1]).fill(Infinity)
+  );
+  cost[0][0] = 0;
+
+  const trace = Array.from({ length: outputShape[0] }, () =>
+    Array(outputShape[1]).fill(-1)
+  );
+
+  for (let j = 1; j < outputShape[1]; ++j) {
+    for (let i = 1; i < outputShape[0]; ++i) {
+      const c0 = cost[i - 1][j - 1];
+      const c1 = cost[i - 1][j];
+      const c2 = cost[i][j - 1];
+
+      let c, t;
+      if (c0 < c1 && c0 < c2) {
+        c = c0;
+        t = 0;
+      } else if (c1 < c0 && c1 < c2) {
+        c = c1;
+        t = 1;
+      } else {
+        c = c2;
+        t = 2;
+      }
+      cost[i][j] = matrix[i - 1][j - 1] + c;
+      trace[i][j] = t;
+    }
+  }
+
+  for (let i = 0; i < outputShape[1]; ++i) {
+    // trace[0, :] = 2
+    trace[0][i] = 2;
+  }
+  for (let i = 0; i < outputShape[0]; ++i) {
+    // trace[:, 0] = 1
+    trace[i][0] = 1;
+  }
+
+  // backtrace
+  let i = output_length;
+  let j = input_length;
+  let text_indices = [];
+  let time_indices = [];
+  while (i > 0 || j > 0) {
+    text_indices.push(i - 1);
+    time_indices.push(j - 1);
+
+    switch (trace[i][j]) {
+      case 0:
+        --i;
+        --j;
+        break;
+      case 1:
+        --i;
+        break;
+      case 2:
+        --j;
+        break;
+      default:
+        throw new Error(
+          `Internal error in dynamic time warping. Unexpected trace[${i}, ${j}]. Please file a bug report.`
+        );
+    }
+  }
+
+  text_indices.reverse();
+  time_indices.reverse();
+
+  return [text_indices, time_indices];
 }

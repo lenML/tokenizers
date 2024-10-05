@@ -129,7 +129,8 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-
 **/models
+
+!**/src/tokenizers/models
 
 local_demo/

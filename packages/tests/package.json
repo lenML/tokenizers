@@ -19,5 +19,8 @@
   "dependencies": {
     "@lenml/tokenizer-llama3_1": "workspace:^",
     "@lenml/tokenizers": "workspace:^"
+  },
+  "publishConfig": {
+    "access": "restricted"
   }
 }

@@ -1,47 +1,9 @@
 # @lenml/tokenizers
 
-This is the central repository for the `@lenml/tokenizers` project, which provides tokenization libraries for various machine learning models.
+a lightweight no-dependency fork from transformers.js (only tokenizers)
 
-# Tokenizer Arena / Playground
-Explore our Tokenizer Arena / Playground! This interactive platform allows you to utilize various tokenizers from our @lenml/tokenizers library. Easily load and compare different tokenizers, seeing how they perform with diverse text inputs. Whether you're a professional developer or a machine learning enthusiast, this playground is perfect for gaining insights into the tokenization process of different models and experimenting with their functionalities.
-
-[![screenshot](./assets/playground.jpg)](https://lenml.github.io/tokenizers-arena/#/side-by-side)
-
-
-# When should I use this instead of transformers.js?
-Firstly, the interface and the actual code of the Tokenizer object are completely identical to those in transformers.js. However, when loading a tokenizer with this library, you're allowed to create your model directly from a JSON object without the need for internet access, and without relying on Hugging Face (hf) servers, or local files.
-
-Therefore, this library becomes more convenient when you need to operate offline and only require the use of a tokenizer without the need for ONNX models.
-
-# Packages
-
-Below is a table showcasing all available packages, the models they support, and their respective locations within the repository:
-
-| Package Name            | Supported Model(s)                  | Repository Link                         |
-|-------------------------|-------------------------------------|-----------------------------------------|
-| `tokenizers` (core)     | N/A (Core Tokenization Library)     | [@lenml/tokenizers](./packages/tokenizers) |
-| `llama2`                | Llama 2 (mistral, zephyr, vicuna)| [@lenml/tokenizer-llama2](./packages/llama2)       |
-| `llama3`                | Llama 3                             | [@lenml/tokenizer-llama3](./packages/llama3)       |
-| `gpt4o`                  | GPT-4o                               | [@lenml/tokenizer-gpt4o](./packages/gpt4o)           |
-| `gpt4`                  | GPT-4                               | [@lenml/tokenizer-gpt4](./packages/gpt4)           |
-| `gpt35turbo`            | GPT-3.5 Turbo                       | [@lenml/tokenizer-gpt35turbo](./packages/gpt35turbo) |
-| `gpt35turbo16k`         | GPT-3.5 Turbo 16k                   | [@lenml/tokenizer-gpt35turbo16k](./packages/gpt35turbo16k) |
-| `gpt3`                  | GPT-3                               | [@lenml/tokenizer-gpt3](./packages/gpt3)           |
-| `gemma`                 | Gemma                               | [@lenml/tokenizer-gemma](./packages/gemma)         |
-| `claude`                | Claude 2/3                          | [@lenml/tokenizer-claude](./packages/claude)       |
-| `claude1`               | Claude 1                            | [@lenml/tokenizer-claude1](./packages/claude1)     |
-| `gpt2`                  | GPT-2                               | [@lenml/tokenizer-gpt2](./packages/gpt2)           |
-| `baichuan2`             | Baichuan 2                          | [@lenml/tokenizer-baichuan2](./packages/baichuan2) |
-| `chatglm3`              | ChatGLM 3                           | [@lenml/tokenizer-chatglm3](./packages/chatglm3)   |
-| `command_r_plus`        | Command-R-Plus                      | [@lenml/tokenizer-command_r_plus](./packages/command_r_plus) |
-| `internlm2`             | InternLM 2                          | [@lenml/tokenizer-internlm2](./packages/internlm2) |
-| `qwen1_5`               | Qwen 1.5                            | [@lenml/tokenizer-qwen1_5](./packages/qwen1_5)     |
-| `yi`                    | Yi                                  | [@lenml/tokenizer-yi](./packages/yi)               |
-| `text_davinci002`       | Text-Davinci-002                    | [@lenml/tokenizer-text_davinci002](./packages/text_davinci002) |
-| `text_davinci003`       | Text-Davinci-003                    | [@lenml/tokenizer-text_davinci003](./packages/text_davinci003) |
-| `text_embedding_ada002` | Text-Embedding-Ada-002              | [@lenml/tokenizer-text_embedding_ada002](./packages/text_embedding_ada002) |
-
-In addition to the pre-packaged models listed above, you can also utilize the interfaces in @lenml/tokenizers to load models independently.
+- github: https://github.com/lenML/tokenizers
+- tokenizers-arena: https://lenml.github.io/tokenizers-arena/#/side-by-side
 
 # Usage
 
