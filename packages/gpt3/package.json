@@ -1,6 +1,6 @@
 {
   "name": "@lenml/tokenizer-gpt3",
-  "version": "1.1.2",
+  "version": "3.0.1",
   "description": "gpt3 tokenizer for NodeJS/Browser",
   "source": "src/main.ts",
   "main": "dist/main.js",
