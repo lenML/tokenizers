@@ -14,9 +14,11 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": false,
-    "noEmit": true
+    "noEmit": true,
+    "inlineSourceMap": true,
+    "inlineSources": true
   },
-  "include": ["tests"],
+  "include": ["tests", "benchmarks"],
   "ts-node": {
     "transpileOnly": true
   }

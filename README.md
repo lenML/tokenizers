@@ -84,9 +84,15 @@ const tokenizer = TokenizerLoader.fromPreTrained({
 ### from urls
 ```ts
 import { TokenizerLoader } from "@lenml/tokenizers";
-const tokenizer = await TokenizerLoader.fromPreTrainedUrls({
+const sourceUrls = {
     tokenizerJSON: "https://huggingface.co/HuggingFaceH4/zephyr-7b-gemma-v0.1/resolve/main/tokenizer.json?download=true",
     tokenizerConfig: "https://huggingface.co/HuggingFaceH4/zephyr-7b-gemma-v0.1/resolve/main/tokenizer_config.json?download=true"
+}
+const tokenizer = await TokenizerLoader.fromPreTrainedUrls(sourceUrls);
+// or from fetch
+const tokenizer = TokenizerLoader.fromPreTrained({
+    tokenizerJSON: await fetch(sourceUrls.tokenizerJSON).then(r => r.json()),
+    tokenizerConfig: await fetch(sourceUrls.tokenizerConfig).then(r => r.json())
 });
 ```
 
@@ -177,7 +183,31 @@ export const tokenizer = TokenizerLoader.fromPreTrained({
 });
 ```
 
-As shown above, by importing from `*.ts` files and correctly configuring your bundling tool, your project will be bundled from the TypeScript source code instead of using the pre-packaged `dist/main.js` script.
+## Performance Benchmark Results
+
+The following table summarizes the performance benchmarks for the `Llama31` and `GPT4o` tokenizers across various datasets. The performance is measured in operations per second (ops/sec), indicating how efficiently each tokenizer processes the given input.
+
+| Tokenizer | Operation           | Text     | Performance (ops/sec) | Margin of Error (±%) | Sampled Runs |
+|-----------|---------------------|----------|-----------------------|----------------------|--------------|
+| Llama31   | encode              | English  | 27,260                | 0.81%                | 86           |
+| Llama31   | encode              | Chinese  | 50,675                | 0.81%                | 89           |
+| Llama31   | encode              | French   | 22,836                | 0.58%                | 92           |
+| Llama31   | encode              | Code     | 17,677                | 0.30%                | 94           |
+| Llama31   | decode              | English  | 16,542                | 0.61%                | 90           |
+| Llama31   | decode              | Chinese  | 21,118                | 0.39%                | 90           |
+| Llama31   | decode              | French   | 12,994                | 0.24%                | 91           |
+| Llama31   | decode              | Code     | 10,350                | 2.80%                | 87           |
+| GPT4o     | encode              | English  | 31,618                | 0.74%                | 92           |
+| GPT4o     | encode              | Chinese  | 73,120                | 0.74%                | 92           |
+| GPT4o     | encode              | French   | 27,838                | 3.40%                | 91           |
+| GPT4o     | encode              | Code     | 19,589                | 3.05%                | 87           |
+| GPT4o     | decode              | English  | 24,723                | 0.73%                | 91           |
+| GPT4o     | decode              | Chinese  | 44,201                | 0.33%                | 92           |
+| GPT4o     | decode              | French   | 21,924                | 0.39%                | 90           |
+| GPT4o     | decode              | Code     | 15,785                | 0.55%                | 94           |
+
+The benchmarking script used to generate these results can be found at `./packages/tests/benchmarks/main.ts`. You can use this script to replicate the benchmarks and validate the performance metrics for yourself.
+
 
 # License
 

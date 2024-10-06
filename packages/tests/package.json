@@ -1,10 +1,12 @@
 {
+  "private": true,
   "name": "tests",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "benchmarks": "tsx ./benchmark/main.ts"
   },
   "keywords": [],
   "author": "",
@@ -17,10 +19,13 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@lenml/tokenizer-gpt4o": "workspace:^",
     "@lenml/tokenizer-llama3_1": "workspace:^",
-    "@lenml/tokenizers": "workspace:^"
-  },
-  "publishConfig": {
-    "access": "restricted"
+    "@lenml/tokenizers": "workspace:^",
+    "@types/benchmark": "^2.1.5",
+    "@types/node": "^20.12.7",
+    "benchmark": "^2.1.4",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.1"
   }
 }
