@@ -293,7 +293,7 @@ const PROBLEMATIC_REGEX_MAP = new Map([
   ],
 
   // Used to override the default (invalid) regex of the bloom pretokenizer.
-  // For more information, see https://github.com/xenova/transformers.js/issues/94
+  // For more information, see https://github.com/huggingface/transformers.js/issues/94
   [` ?[^(\\s|[${BLOOM_SPLIT_CHARS}])]+`, ` ?[^\\s${BLOOM_SPLIT_CHARS}]+`],
 ]);
 
@@ -1004,7 +1004,7 @@ class Normalizer extends Callable {
    * Factory method for creating normalizers from config objects.
    * @static
    * @param {Object} config The configuration object for the normalizer.
-   * @returns {Normalizer | null} A Normalizer object.
+   * @returns {Normalizer|null} A Normalizer object.
    * @throws {Error} If an unknown Normalizer type is specified in the config.
    */
   static fromConfig(config) {
@@ -2622,7 +2622,7 @@ export class PreTrainedTokenizer extends Callable {
 
       // Another slight hack to add `end_of_word_suffix` (if present) to the decoder
       // This is needed for cases where BPE model and ByteLevel decoder are used
-      // For more information, see https://github.com/xenova/transformers.js/issues/74
+      // For more information, see https://github.com/huggingface/transformers.js/issues/74
       // TODO: save this to the decoder when exporting?
       this.decoder.end_of_word_suffix = this.model.end_of_word_suffix;
     }
