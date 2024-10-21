@@ -19,11 +19,13 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.25.8",
     "@lenml/tokenizer-gpt4o": "workspace:^",
     "@lenml/tokenizer-llama3_1": "workspace:^",
     "@lenml/tokenizers": "workspace:^",
     "@types/benchmark": "^2.1.5",
     "@types/node": "^20.12.7",
+    "babel-jest": "^29.7.0",
     "benchmark": "^2.1.4",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.1"

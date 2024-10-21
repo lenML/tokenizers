@@ -1,4 +1,6 @@
 import { fromPreTrained as loadLlama3_1 } from "@lenml/tokenizer-llama3_1";
+import { TokenizerLoader } from "@lenml/tokenizers/src/main";
+import { loadJsonFile } from "./utils";
 
 const MAX_TEST_EXECUTION_TIME = 60_000; // 60 seconds
 
@@ -58,5 +60,20 @@ describe("tokenizers", () => {
     // Just test it without error.
     const tokens = tokenizer.apply_chat_template(chat);
     expect(tokens).toBeInstanceOf(Array);
+  });
+
+  it("#7 Should load tokenizer of T5", () => {
+    // source from https://github.com/lenML/tokenizers/issues/7
+    const tokenizerJSON = loadJsonFile("./test-inputs/t5-small/tokenizer.json");
+    const tokenizerConfig = loadJsonFile(
+      "./test-inputs/t5-small/tokenizer_config.json"
+    );
+    const tokenizer = TokenizerLoader.fromPreTrained({
+      tokenizerJSON,
+      tokenizerConfig,
+    });
+
+    const ids = tokenizer.encode("test");
+    tokenizer.decode(ids);
   });
 });
