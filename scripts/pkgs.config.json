@@ -86,5 +86,25 @@
   {
     "name": "llama3_1",
     "globalName": "Llama3_1Tokenizer"
+  },
+  {
+    "name": "gemma2",
+    "globalName": "Gemma2Tokenizer"
+  },
+  {
+    "name": "qwen2_5",
+    "globalName": "Qwen2_5Tokenizer"
+  },
+  {
+    "name": "aya_expanse",
+    "globalName": "AyaExpanseTokenizer"
+  },
+  {
+    "name": "llama3_2",
+    "globalName": "Llama3_2Tokenizer"
+  },
+  {
+    "name": "mistral_nemo",
+    "globalName": "MistralNemoTokenizer"
   }
 ]

@@ -63,6 +63,8 @@ const configs = [
   repos.Xenova("gpt2", "gpt2"),
   repos.Xenova("gpt2", "gpt2"),
   repos.Xenova("llama3-tokenizer-new", "llama3_1"),
+  repos.Xenova("gemma2-tokenizer", "gemma2"),
+  repos.Xenova("Llama-3.2-Tokenizer", "llama3_2"),
   // baichuan-inc/Baichuan2-7B-Chat
   hf_model_repo("baichuan-inc", "Baichuan2-7B-Chat", "baichuan2"),
   // beomi/gemma-mling-7b
@@ -81,6 +83,12 @@ const configs = [
   hf_repo("01-ai", "YI-34B", "yi"),
   // Qwen/Qwen1.5-72B-Chat
   hf_repo("Qwen", "Qwen1.5-72B-Chat", "qwen1_5"),
+  // Qwen/Qwen2.5-1.5B-Instruct
+  hf_repo("Qwen", "Qwen2.5-1.5B-Instruct", "qwen2_5"),
+  // aya-expanse-8b from adamo1139/aya-expanse-8b-ungated
+  hf_repo("adamo1139", "aya-expanse-8b-ungated", "aya_expanse"),
+  // mistral nemo 12b from nbeerbower/mistral-nemo-wissenschaft-12B
+  hf_repo("nbeerbower", "mistral-nemo-wissenschaft-12B", "mistral_nemo"),
 
   // from gist
   {
