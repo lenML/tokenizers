@@ -11,10 +11,10 @@ if __name__ == "__main__":
     parser.add_argument(
         "--out",
         type=str,
-        default="./tokenizer.json",
-        help="The directory to save the output file",
+        default=".",
+        help="The directory to save the output files",
     )
     args = parser.parse_args()
 
     fast_tokenizer = LlamaTokenizerFast(args.file)
-    fast_tokenizer.backend_tokenizer.save(args.out)
+    fast_tokenizer.save_pretrained(args.out)

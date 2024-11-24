@@ -106,5 +106,9 @@
   {
     "name": "mistral_nemo",
     "globalName": "MistralNemoTokenizer"
+  },
+  {
+    "name": "gemini",
+    "globalNmae": "GeminiTokenizer"
   }
 ]

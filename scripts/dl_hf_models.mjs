@@ -65,6 +65,7 @@ const configs = [
   repos.Xenova("llama3-tokenizer-new", "llama3_1"),
   repos.Xenova("gemma2-tokenizer", "gemma2"),
   repos.Xenova("Llama-3.2-Tokenizer", "llama3_2"),
+  repos.Xenova("gemini-nano", "gemini"),
   // baichuan-inc/Baichuan2-7B-Chat
   hf_model_repo("baichuan-inc", "Baichuan2-7B-Chat", "baichuan2"),
   // beomi/gemma-mling-7b
