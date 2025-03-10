@@ -41,11 +41,7 @@ import {
 
 import { Template } from "@huggingface/jinja";
 
-import {
-  WHISPER_LANGUAGE_MAPPING,
-  whisper_language_to_code,
-} from "./models/whisper/common_whisper.js";
-import { GITHUB_ISSUE_URL } from "./utils/constants.js";
+import { WHISPER_LANGUAGE_MAPPING } from "./models/whisper/common_whisper.js";
 
 /**
  * @typedef {Object} TokenizerProperties Additional tokenizer-specific properties.
@@ -375,13 +371,19 @@ export class TokenizerModel extends Callable {
         return new BPE(config);
 
       default:
-        // Some tokenizers, like for google-t5/t5-small, do not have a `type` field.
-        // In this case, we can infer the tokenizer type based on the structure of the `vocab` field.
+        // Some older tokenizers, like `google-t5/t5-small` and `distilbert/distilbert-base-uncased`, do not have a `type` field.
+        // In this case, we can infer the tokenizer type based on the structure of the `vocab` field and other properties.
         if (config.vocab) {
           if (Array.isArray(config.vocab)) {
             // config.vocab is of type `[string, number][]`
             // @ts-ignore
             return new Unigram(config, ...args);
+          } else if (
+            typeof config.vocab === "object" &&
+            config.continuing_subword_prefix &&
+            config.unk_token
+          ) {
+            return new WordPieceTokenizer(config);
           } else {
             // @ts-ignore
             return new LegacyTokenizerModel(config, ...args);
@@ -543,7 +545,7 @@ class Unigram extends TokenizerModel {
    * Create a new Unigram tokenizer model.
    * @param {Object} config The configuration object for the Unigram model.
    * @param {number} config.unk_id The ID of the unknown token
-   * @param {any[][]} config.vocab A 2D array representing a mapping of tokens to scores.
+   * @param {[string, number][]} config.vocab A 2D array representing a mapping of tokens to scores.
    * @param {Object} moreConfig Additional configuration object for the Unigram model.
    */
   constructor(config, moreConfig) {
@@ -551,11 +553,10 @@ class Unigram extends TokenizerModel {
 
     const vocabSize = config.vocab.length;
     this.vocab = new Array(vocabSize);
+    /** @type {number[]} */
     this.scores = new Array(vocabSize);
     for (let i = 0; i < vocabSize; ++i) {
-      const piece = config.vocab[i];
-      this.vocab[i] = piece[0];
-      this.scores[i] = piece[1];
+      [this.vocab[i], this.scores[i]] = config.vocab[i];
     }
 
     this.unk_token_id = config.unk_id;
@@ -1020,6 +1021,8 @@ class Normalizer extends Callable {
         return new Replace(config);
       case "NFC":
         return new NFC(config);
+      case "NFD":
+        return new NFD(config);
       case "NFKC":
         return new NFKC(config);
       case "NFKD":
@@ -1077,50 +1080,62 @@ class Replace extends Normalizer {
 }
 
 /**
- * A normalizer that applies Unicode normalization form C (NFC) to the input text.
+ * A normalizer that applies Unicode normalization to the input text.
  * @extends Normalizer
+ * @abstract
  */
-class NFC extends Normalizer {
+class UnicodeNormalizer extends Normalizer {
   /**
-   * Normalize the input text by applying Unicode normalization form C (NFC).
+   * @type {string} The Unicode normalization form to apply.
+   * Should be one of: 'NFC', 'NFD', 'NFKC', or 'NFKD'.
+   */
+  form = undefined;
+
+  /**
+   * Normalize the input text by applying Unicode normalization.
    * @param {string} text The input text to be normalized.
    * @returns {string} The normalized text.
    */
   normalize(text) {
-    text = text.normalize("NFC");
+    text = text.normalize(this.form);
     return text;
   }
 }
 
 /**
- * NFKC Normalizer.
- * @extends Normalizer
+ * A normalizer that applies Unicode normalization form C (NFC) to the input text.
+ * Canonical Decomposition, followed by Canonical Composition.
+ * @extends UnicodeNormalizer
  */
-class NFKC extends Normalizer {
-  /**
-   * Normalize text using NFKC normalization.
-   * @param {string} text The text to be normalized.
-   * @returns {string} The normalized text.
-   */
-  normalize(text) {
-    text = text.normalize("NFKC");
-    return text;
-  }
+class NFC extends UnicodeNormalizer {
+  form = "NFC";
 }
+
 /**
- * NFKD Normalizer.
- * @extends Normalizer
+ * A normalizer that applies Unicode normalization form D (NFD) to the input text.
+ * Canonical Decomposition.
+ * @extends UnicodeNormalizer
  */
-class NFKD extends Normalizer {
-  /**
-   * Normalize text using NFKD normalization.
-   * @param {string} text The text to be normalized.
-   * @returns {string} The normalized text.
-   */
-  normalize(text) {
-    text = text.normalize("NFKD");
-    return text;
-  }
+class NFD extends UnicodeNormalizer {
+  form = "NFD";
+}
+
+/**
+ * A normalizer that applies Unicode normalization form KC (NFKC) to the input text.
+ * Compatibility Decomposition, followed by Canonical Composition.
+ * @extends UnicodeNormalizer
+ */
+class NFKC extends UnicodeNormalizer {
+  form = "NFKC";
+}
+
+/**
+ * A normalizer that applies Unicode normalization form KD (NFKD) to the input text.
+ * Compatibility Decomposition.
+ * @extends UnicodeNormalizer
+ */
+class NFKD extends UnicodeNormalizer {
+  form = "NFKD";
 }
 
 /**
@@ -1549,6 +1564,8 @@ class SplitPreTokenizer extends PreTokenizer {
 
     if (this.config.invert) {
       return text.match(this.pattern) || [];
+    } else if (this.config.behavior?.toLowerCase() === "removed") {
+      return text.split(this.pattern).filter((x) => x);
     } else {
       return regexSplit(text, this.pattern);
     }
@@ -2657,6 +2674,12 @@ export class PreTrainedTokenizer extends Callable {
     this.unk_token = this.getToken("unk_token");
     this.unk_token_id = this.model.tokens_to_ids.get(this.unk_token);
 
+    this.bos_token = this.getToken("bos_token");
+    this.bos_token_id = this.model.tokens_to_ids.get(this.bos_token);
+
+    this.eos_token = this.getToken("eos_token");
+    this.eos_token_id = this.model.tokens_to_ids.get(this.eos_token);
+
     this.model_max_length = tokenizerConfig.model_max_length;
 
     /** @type {boolean} Whether or not to strip the text when tokenizing (removing excess spaces before and after the string). */
@@ -3709,6 +3732,11 @@ export class WhisperTokenizer extends PreTrainedTokenizer {
     let chunk = new_chunk();
     let time_offset = 0.0;
     const timestamp_begin = this.timestamp_begin;
+    // Whisper timestamp tokens start from 0.00 and go to timestamp 30.00 in 0.02 increments.
+    // We can calculate the last time stamp token as timestamp_begin plus the number of tokens
+    // tokens from 0.00 to 30.00 which is 1500.
+    const total_timestamp_tokens = 1500; // (30.00 - 0.00) / 0.02
+    const timestamp_end = timestamp_begin + total_timestamp_tokens;
 
     let previous_tokens = [];
     let previous_token_timestamps = [];
@@ -3805,7 +3833,7 @@ export class WhisperTokenizer extends PreTrainedTokenizer {
           } else {
             // 2/ This is a regular special token, ignoring it
           }
-        } else if (token >= timestamp_begin) {
+        } else if (token >= timestamp_begin && token <= timestamp_end) {
           // 3/ Timestamp token
           const time = (token - timestamp_begin) * time_precision + time_offset;
           const rounded_time = round(time, 2);
@@ -4440,6 +4468,8 @@ export class VitsTokenizer extends PreTrainedTokenizer {
 
 export class CohereTokenizer extends PreTrainedTokenizer {}
 
+export class MgpstrTokenizer extends PreTrainedTokenizer {}
+
 /**
  * Helper class which is used to instantiate pretrained tokenizers with the `from_pretrained` function.
  * The chosen tokenizer class is determined by the type specified in the tokenizer config.
@@ -4493,6 +4523,7 @@ export class AutoTokenizer {
     GemmaTokenizer,
     Grok1Tokenizer,
     CohereTokenizer,
+    MgpstrTokenizer,
 
     // Base case:
     PreTrainedTokenizer,
