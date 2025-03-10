@@ -42,9 +42,15 @@ const tokenizer = TokenizerLoader.fromPreTrained({
 ### from urls
 ```ts
 import { TokenizerLoader } from "@lenml/tokenizers";
-const tokenizer = await TokenizerLoader.fromPreTrainedUrls({
+const sourceUrls = {
     tokenizerJSON: "https://huggingface.co/HuggingFaceH4/zephyr-7b-gemma-v0.1/resolve/main/tokenizer.json?download=true",
     tokenizerConfig: "https://huggingface.co/HuggingFaceH4/zephyr-7b-gemma-v0.1/resolve/main/tokenizer_config.json?download=true"
+}
+const tokenizer = await TokenizerLoader.fromPreTrainedUrls(sourceUrls);
+// or from fetch
+const tokenizer = TokenizerLoader.fromPreTrained({
+    tokenizerJSON: await fetch(sourceUrls.tokenizerJSON).then(r => r.json()),
+    tokenizerConfig: await fetch(sourceUrls.tokenizerConfig).then(r => r.json())
 });
 ```
 

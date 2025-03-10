@@ -90,6 +90,8 @@ const configs = [
   hf_repo("adamo1139", "aya-expanse-8b-ungated", "aya_expanse"),
   // mistral nemo 12b from nbeerbower/mistral-nemo-wissenschaft-12B
   hf_repo("nbeerbower", "mistral-nemo-wissenschaft-12B", "mistral_nemo"),
+  // deepseek v3 tokenizer form  deepseek-ai/DeepSeek-V3
+  hf_repo("deepseek-ai", "DeepSeek-V3", "deepseek_v3"),
 
   // from gist
   {
@@ -140,7 +142,11 @@ const curl = async (url, output_path) => {
     console.log(`File ${output_path} already exists, skipping download.`);
     return;
   }
-  const proxy = process.env.HTTP_PROXY || process.env.http_proxy;
+  const proxy =
+    process.env.HTTP_PROXY ||
+    process.env.http_proxy ||
+    process.env.HTTPS_PROXY ||
+    process.env.https_proxy;
   let cmd = `curl -L ${url} -o ${output_path}`;
 
   if (proxy) {
