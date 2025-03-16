@@ -92,6 +92,11 @@ const configs = [
   hf_repo("nbeerbower", "mistral-nemo-wissenschaft-12B", "mistral_nemo"),
   // deepseek v3 tokenizer form  deepseek-ai/DeepSeek-V3
   hf_repo("deepseek-ai", "DeepSeek-V3", "deepseek_v3"),
+  // gemma3 tokenizer from google/gemma-3-1b-it
+  // 因为 gemma3 系列为多模态，所以和之前的不通用，并且tokenizer很大
+  // hf_repo("google", "gemma-3-1b-it", "gemma3"),
+  // 因为 google 的参考必须要登陆才给看... 所以换成 unsloth/gemma-3-1b-it
+  hf_repo("unsloth", "gemma-3-1b-it", "gemma3"),
 
   // from gist
   {

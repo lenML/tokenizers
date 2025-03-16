@@ -118,5 +118,9 @@
   {
     "name": "deepseek_v3",
     "globalNmae": "DeepSeekTokenizer"
+  },
+  {
+    "name": "gemma3",
+    "globalNmae": "Gemma3Tokenizer"
   }
 ]
