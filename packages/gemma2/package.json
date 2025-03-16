@@ -1,6 +1,6 @@
 {
   "name": "@lenml/tokenizer-gemma2",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "description": "gemma2 tokenizer for NodeJS/Browser",
   "source": "src/main.ts",
   "main": "dist/main.js",

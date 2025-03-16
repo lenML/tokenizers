@@ -1,6 +1,6 @@
 {
   "name": "@lenml/tokenizer-claude",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "description": "claude tokenizer for NodeJS/Browser",
   "source": "src/main.ts",
   "main": "dist/main.js",
