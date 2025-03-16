@@ -1,6 +1,6 @@
 {
   "name": "@lenml/tokenizer-yi",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "description": "yi tokenizer for NodeJS/Browser",
   "source": "src/main.ts",
   "main": "dist/main.js",
