@@ -97,6 +97,7 @@ const configs = [
   // hf_repo("google", "gemma-3-1b-it", "gemma3"),
   // 因为 google 的参考必须要登陆才给看... 所以换成 unsloth/gemma-3-1b-it
   hf_repo("unsloth", "gemma-3-1b-it", "gemma3"),
+  hf_repo("Qwen", "Qwen3-4B", "qwen3"),
 
   // from gist
   {

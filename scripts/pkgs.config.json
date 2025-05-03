@@ -122,5 +122,9 @@
   {
     "name": "gemma3",
     "globalNmae": "Gemma3Tokenizer"
+  },
+  {
+    "name": "qwen3",
+    "globalNmae": "Qwen3Tokenizer"
   }
 ]
