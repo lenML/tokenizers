@@ -171,7 +171,7 @@ console.log(
 );
 ```
 
-> fully tokenizer api: [transformer.js tokenizers document](https://huggingface.co/docs/transformers.js/api/tokenizers)
+> fully tokenizer api: [transformer.js tokenizers document](https://huggingface.co/docs/transformers.js/v3.0.0/api/tokenizers)
 
 ## get lightweight `transformers.tokenizers`
 
