@@ -1,4 +1,4 @@
-# @lenml/tokenizer-nimicpm_v4_5
+# @lenml/tokenizer-minicpm_v4_5
 
 a tokenizer.
 
@@ -7,7 +7,7 @@ a tokenizer.
 # Usage
 
 ```ts
-import { fromPreTrained } from "@lenml/tokenizer-nimicpm_v4_5";
+import { fromPreTrained } from "@lenml/tokenizer-minicpm_v4_5";
 
 const tokenizer = fromPreTrained();
 console.log(

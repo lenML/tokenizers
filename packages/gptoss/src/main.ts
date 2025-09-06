@@ -10,7 +10,7 @@ import {
  * Build a tokenizer from a pre-trained model.
  */
 export const fromPreTrained: FromPreTrainedFn<
-  TokenizerClassNameMapping<"PreTrainedTokenizer">
+  TokenizerClassNameMapping<"PreTrainedTokenizerFast">
 > = (params) => {
   return TokenizerLoader.fromPreTrained({
     tokenizerJSON: {

@@ -1,7 +1,7 @@
 {
-  "name": "@lenml/tokenizer-nimicpm_v4_5",
-  "version": "3.4.2",
-  "description": "nimicpm_v4_5 tokenizer for NodeJS/Browser",
+  "name": "@lenml/tokenizer-minicpm_v4_5",
+  "version": "3.7.2",
+  "description": "minicpm_v4_5 tokenizer for NodeJS/Browser",
   "source": "src/main.ts",
   "main": "dist/main.js",
   "module": "dist/main.mjs",
@@ -46,7 +46,7 @@
     "chatgpt",
     "mistral",
     "tokenizer",
-    "nimicpm_v4_5"
+    "minicpm_v4_5"
   ],
   "license": "Apache-2.0",
   "publishConfig": {

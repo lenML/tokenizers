@@ -1,6 +1,6 @@
 {
   "name": "@lenml/tokenizer-aya_expanse",
-  "version": "3.4.2",
+  "version": "3.7.2",
   "description": "aya_expanse tokenizer for NodeJS/Browser",
   "source": "src/main.ts",
   "main": "dist/main.js",
