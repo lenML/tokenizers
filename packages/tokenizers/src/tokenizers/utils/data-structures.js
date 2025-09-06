@@ -450,3 +450,130 @@ class TokenLatticeNode {
     return n;
   }
 }
+
+/**
+ * A data structure which uses a trie to split a string into tokens based on a dictionary.
+ * It can also use a regular expression to preprocess the input text before splitting.
+ *
+ * NOTE: To ensure multi-byte characters are handled correctly, we operate at byte-level instead of character-level.
+ */
+export class DictionarySplitter {
+  /**
+   * @param {string[]} dictionary The dictionary of words to use for splitting.
+   */
+  constructor(dictionary) {
+    this.trie = this._buildTrie(dictionary);
+  }
+
+  /**
+   * Builds a trie from the given dictionary.
+   * @param {string[]} dictionary The dictionary of words to build the trie from.
+   * @returns {Object} The root node of the trie.
+   * @private
+   */
+  _buildTrie(dictionary) {
+    const trie = Object.create(null);
+    for (const word of dictionary) {
+      let node = trie;
+      for (let i = 0; i < word.length; ++i) {
+        node = node[word[i]] ??= Object.create(null);
+      }
+      node.end = word;
+    }
+    return trie;
+  }
+
+  /**
+   * Splits the input text into tokens based on the dictionary.
+   * @param {string} text The input text to split.
+   * @returns {string[]} An array of tokens.
+   */
+  split(text) {
+    const result = [];
+    const n = text.length;
+    let start = 0;
+    let i = 0;
+
+    while (i < n) {
+      let node = this.trie;
+      let match = null;
+      let j = i;
+
+      while (j < n && (node = node[text[j]])) {
+        if (node.end) {
+          // Always keep the last (i.e., longest) match.
+          match = node.end;
+        }
+        ++j;
+      }
+
+      if (match) {
+        if (i > start) {
+          result.push(text.slice(start, i));
+        }
+        result.push(match);
+        i += match.length;
+        start = i;
+      } else {
+        ++i;
+      }
+    }
+    if (start < n) {
+      result.push(text.slice(start));
+    }
+    return result;
+  }
+}
+
+/**
+ * A simple Least Recently Used (LRU) cache implementation in JavaScript.
+ * This cache stores key-value pairs and evicts the least recently used item
+ * when the capacity is exceeded.
+ */
+export class LRUCache {
+  /**
+   * Creates an LRUCache instance.
+   * @param {number} capacity The maximum number of items the cache can hold.
+   */
+  constructor(capacity) {
+    this.capacity = capacity;
+    this.cache = new Map();
+  }
+
+  /**
+   * Retrieves the value associated with the given key and marks the key as recently used.
+   * @param {any} key The key to retrieve.
+   * @returns {any} The value associated with the key, or undefined if the key does not exist.
+   */
+  get(key) {
+    if (!this.cache.has(key)) return undefined;
+    const value = this.cache.get(key);
+    this.cache.delete(key);
+    this.cache.set(key, value);
+    return value;
+  }
+
+  /**
+   * Inserts or updates the key-value pair in the cache.
+   * If the key already exists, it is updated and marked as recently used.
+   * If the cache exceeds its capacity, the least recently used item is evicted.
+   * @param {any} key The key to add or update.
+   * @param {any} value The value to associate with the key.
+   */
+  put(key, value) {
+    if (this.cache.has(key)) {
+      this.cache.delete(key);
+    }
+    this.cache.set(key, value);
+    if (this.cache.size > this.capacity) {
+      this.cache.delete(this.cache.keys().next().value);
+    }
+  }
+
+  /**
+   * Clears the cache.
+   */
+  clear() {
+    this.cache.clear();
+  }
+}

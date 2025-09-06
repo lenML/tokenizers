@@ -37,6 +37,8 @@ import {
   PriorityQueue,
   TokenLattice,
   CharTrie,
+  DictionarySplitter,
+  LRUCache,
 } from "./utils/data-structures.js";
 
 import { Template } from "@huggingface/jinja";
@@ -371,7 +373,7 @@ export class TokenizerModel extends Callable {
         return new BPE(config);
 
       default:
-        // Some older tokenizers, like `google-t5/t5-small` and `distilbert/distilbert-base-uncased`, do not have a `type` field.
+        // Some older tokenizers, like `google-t5/t5-small`, `openai-community/gpt2`, and `distilbert/distilbert-base-uncased`, do not have a `type` field.
         // In this case, we can infer the tokenizer type based on the structure of the `vocab` field and other properties.
         if (config.vocab) {
           if (Array.isArray(config.vocab)) {
@@ -379,11 +381,14 @@ export class TokenizerModel extends Callable {
             // @ts-ignore
             return new Unigram(config, ...args);
           } else if (
-            typeof config.vocab === "object" &&
-            config.continuing_subword_prefix &&
-            config.unk_token
+            Object.hasOwn(config, "continuing_subword_prefix") &&
+            Object.hasOwn(config, "unk_token")
           ) {
-            return new WordPieceTokenizer(config);
+            if (Object.hasOwn(config, "merges")) {
+              return new BPE(config);
+            } else {
+              return new WordPieceTokenizer(config);
+            }
           } else {
             // @ts-ignore
             return new LegacyTokenizerModel(config, ...args);
@@ -749,8 +754,24 @@ class BPE extends TokenizerModel {
 
     this.ignore_merges = this.config.ignore_merges ?? false;
 
-    /** @type {Map<string, string[]>} */
-    this.cache = new Map();
+    /**
+     * The maximum length we should cache in a model.
+     * Strings that are too long have minimal chances to cache hit anyway
+     */
+    this.max_length_to_cache = 256;
+
+    /**
+     * The default capacity for a `BPE`'s internal cache.
+     */
+    this.cache_capacity = 10000;
+    this.cache = new LRUCache(this.cache_capacity);
+  }
+
+  /**
+   * Clears the cache.
+   */
+  clear_cache() {
+    this.cache.clear();
   }
 
   /**
@@ -880,8 +901,10 @@ class BPE extends TokenizerModel {
       }
     }
 
-    // Save the result to the cache
-    this.cache.set(token, result);
+    if (token.length < this.max_length_to_cache) {
+      // Save the result to the cache
+      this.cache.put(token, result);
+    }
 
     return result;
   }
@@ -1005,7 +1028,7 @@ class Normalizer extends Callable {
    * Factory method for creating normalizers from config objects.
    * @static
    * @param {Object} config The configuration object for the normalizer.
-   * @returns {Normalizer|null} A Normalizer object.
+   * @returns {Normalizer} A Normalizer object.
    * @throws {Error} If an unknown Normalizer type is specified in the config.
    */
   static fromConfig(config) {
@@ -2594,9 +2617,12 @@ export class PreTrainedTokenizer extends Callable {
   constructor(tokenizerJSON, tokenizerConfig) {
     super();
 
-    this._tokenizer_config = tokenizerConfig;
+    this.config = tokenizerConfig;
 
     // Construct parts of the tokenizer from the JSON
+    /**
+     * @type {Normalizer | null}
+     */
     this.normalizer = Normalizer.fromConfig(tokenizerJSON.normalizer);
     this.pre_tokenizer = PreTokenizer.fromConfig(tokenizerJSON.pre_tokenizer);
     this.model = TokenizerModel.fromConfig(
@@ -2644,22 +2670,14 @@ export class PreTrainedTokenizer extends Callable {
       this.decoder.end_of_word_suffix = this.model.end_of_word_suffix;
     }
 
-    this.added_tokens_regex =
-      this.added_tokens.length > 0
-        ? new RegExp(
-            this.added_tokens
-              .slice()
-              // Sort by length (desc) to avoid early partial matches
-              .sort((a, b) => b.content.length - a.content.length)
-              .map(
-                (x) =>
-                  `${x.lstrip ? "\\s*" : ""}(${escapeRegExp(x.content)})${
-                    x.rstrip ? "\\s*" : ""
-                  }`
-              )
-              .join("|")
-          )
-        : null;
+    this.added_tokens_splitter = new DictionarySplitter(
+      this.added_tokens.map((x) => x.content)
+    );
+
+    /** @type {Map<string, AddedToken>} */
+    this.added_tokens_map = new Map(
+      this.added_tokens.map((x) => [x.content, x])
+    );
 
     // Set mask token if present (otherwise will be undefined, which is fine)
     this.mask_token = this.getToken("mask_token");
@@ -2694,6 +2712,9 @@ export class PreTrainedTokenizer extends Callable {
       this.padding_side = tokenizerConfig.padding_side;
     }
 
+    this.add_bos_token = tokenizerConfig.add_bos_token;
+    this.add_eos_token = tokenizerConfig.add_eos_token;
+
     this.legacy = false;
 
     this.chat_template = tokenizerConfig.chat_template ?? null;
@@ -2723,7 +2744,7 @@ export class PreTrainedTokenizer extends Callable {
    */
   getToken(...keys) {
     for (const key of keys) {
-      const item = this._tokenizer_config[key];
+      const item = this.config[key];
 
       if (!item) continue;
 
@@ -2859,22 +2880,32 @@ export class PreTrainedTokenizer extends Callable {
         }),
       ];
     }
-    // At this point, tokens is batched: [batch_size, tokens]
-    // However, array may be jagged. So, we pad to max_length
-
+    // At this point, `encodedTokens` is batched, of shape [batch_size, tokens].
+    // However, array may be jagged. So, we may need pad to max_length.
     if (max_length === null) {
-      if (padding === "max_length") {
-        max_length = this.model_max_length;
-      } else {
-        // Calculate max length from sequences
-        max_length = max(encodedTokens.map((x) => x.input_ids.length))[0];
-      }
-    } else {
-      if (!truncation) {
+      max_length = this.model_max_length;
+    } else if (truncation === null) {
+      if (padding === true) {
         console.warn(
-          `Truncation was not explicitly activated but \`max_length\` is provided a specific value, please use \`truncation=true\` to explicitly truncate examples to max length.`
+          "`max_length` is ignored when `padding: true` and there is no truncation strategy. " +
+            "To pad to max length, use `padding: 'max_length'`."
         );
+        max_length = this.model_max_length;
+      } else if (padding === false) {
+        console.warn(
+          "Truncation was not explicitly activated but `max_length` is provided a specific value, please use `truncation: true` to explicitly truncate examples to max length."
+        );
+        truncation = true;
       }
+    }
+
+    // padding: 'max_length' doesn't require any additional calculation
+    // but padding: true has to calculate max_length from the sequences
+    if (padding === true) {
+      max_length = Math.min(
+        max(encodedTokens.map((x) => x.input_ids.length))[0],
+        max_length ?? Infinity
+      );
     }
 
     // Ensure it is less than model max length
@@ -2970,47 +3001,53 @@ export class PreTrainedTokenizer extends Callable {
     // Actual function which does encoding, for a single text
     // First, we take care of special tokens. Needed to avoid issues arising from
     // normalization and/or pretokenization (which may not preserve special tokens)
-    const sections = this.added_tokens_regex
-      ? text.split(this.added_tokens_regex).filter((x) => x)
-      : [text];
+    const sections = this.added_tokens_splitter.split(text);
 
-    const tokens = sections
-      .map((x, section_index) => {
-        const addedToken = this.added_tokens.find((t) => t.content === x);
-        if (addedToken !== undefined) {
-          // Ignore added tokens
-          return x;
-        } else {
-          if (this.remove_space === true) {
-            x = x.trim().split(/\s+/).join(" ");
-          }
-          if (this.do_lowercase_and_remove_accent) {
-            x = lowercase_and_remove_accent(x);
-          }
-
-          if (this.normalizer !== null) {
-            x = this.normalizer(x);
-          }
-
-          // If, after normalization, this section is empty (e.g., trimming whitespace),
-          // we return an empty array
-          if (x.length === 0) {
-            return [];
-          }
-
-          const sectionTokens =
-            this.pre_tokenizer !== null
-              ? this.pre_tokenizer(x, {
-                  section_index,
-                })
-              : [x];
-
-          const tokens = this.model(sectionTokens);
-
-          return tokens;
+    // Process left/right stripping of added tokens
+    for (let i = 0; i < sections.length; ++i) {
+      const addedToken = this.added_tokens_map.get(sections[i]);
+      if (addedToken) {
+        if (addedToken.lstrip && i > 0) {
+          sections[i - 1] = sections[i - 1].trimEnd();
         }
-      })
-      .flat();
+        if (addedToken.rstrip && i < sections.length - 1) {
+          sections[i + 1] = sections[i + 1].trimStart();
+        }
+      }
+    }
+
+    const tokens = sections.flatMap((x, section_index) => {
+      if (x.length === 0) return [];
+      if (this.added_tokens_map.has(x)) return [x]; // Return added tokens unchanged
+
+      if (this.remove_space === true) {
+        x = x.trim().split(/\s+/).join(" ");
+      }
+      if (this.do_lowercase_and_remove_accent) {
+        x = lowercase_and_remove_accent(x);
+      }
+
+      if (this.normalizer !== null) {
+        x = this.normalizer(x);
+      }
+
+      // If, after normalization, this section is empty (e.g., trimming whitespace),
+      // we return an empty array
+      if (x.length === 0) {
+        return [];
+      }
+
+      const sectionTokens =
+        this.pre_tokenizer !== null
+          ? this.pre_tokenizer(x, {
+              section_index,
+            })
+          : [x];
+
+      const tokens = this.model(sectionTokens);
+
+      return tokens;
+    });
 
     return tokens;
   }
@@ -3602,7 +3639,7 @@ function _build_translation_inputs(
  * between any pair of 200+ languages — including low-resource languages like Asturian,
  * Luganda, Urdu and more. It aims to help people communicate with anyone, anywhere,
  * regardless of their language preferences. For more information, check out their
- * [paper](https://arxiv.org/abs/2207.04672).
+ * [paper](https://huggingface.co/papers/2207.04672).
  *
  * For a list of supported languages (along with their language codes),
  * @see {@link https://github.com/facebookresearch/flores/blob/main/flores200/README.md#languages-in-flores-200}
@@ -3639,7 +3676,7 @@ export class NllbTokenizer extends PreTrainedTokenizer {
  * The M2M100Tokenizer class is used to tokenize text for M2M100 ("Many-to-Many") models.
  *
  * M2M100 is a multilingual encoder-decoder (seq-to-seq) model trained for Many-to-Many
- * multilingual translation. It was introduced in this [paper](https://arxiv.org/abs/2010.11125)
+ * multilingual translation. It was introduced in this [paper](https://huggingface.co/papers/2010.11125)
  * and first released in [this](https://github.com/pytorch/fairseq/tree/master/examples/m2m_100) repository.
  *
  * For a list of supported languages (along with their language codes),
@@ -4470,6 +4507,8 @@ export class CohereTokenizer extends PreTrainedTokenizer {}
 
 export class MgpstrTokenizer extends PreTrainedTokenizer {}
 
+export class Ernie4_5_Tokenizer extends PreTrainedTokenizer {}
+
 /**
  * Helper class which is used to instantiate pretrained tokenizers with the `from_pretrained` function.
  * The chosen tokenizer class is determined by the type specified in the tokenizer config.
@@ -4524,6 +4563,7 @@ export class AutoTokenizer {
     Grok1Tokenizer,
     CohereTokenizer,
     MgpstrTokenizer,
+    Ernie4_5_Tokenizer,
 
     // Base case:
     PreTrainedTokenizer,
