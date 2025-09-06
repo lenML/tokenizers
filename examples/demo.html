@@ -1,60 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@lenML/tokenizers Demo</title>
-    <script type="importmap">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@lenML/tokenizers Demo</title>
+  <script type="importmap">
       {
         "imports": {
-          "@lenml/tokenizers": "https://www.unpkg.com/@lenml/tokenizers@1.0.4/dist/main.mjs"
+          "@lenml/tokenizers": "https://www.unpkg.com/@lenml/tokenizers@3.7.2/dist/main.mjs"
         }
       }
     </script>
-  </head>
-  <body>
-    <h1>@lenML/tokenizers Demo</h1>
-    <p id="info"></p>
-    <p id="result">loading...</p>
-    <script type="module">
-      import { TokenizerLoader } from "@lenml/tokenizers";
+</head>
 
-      const put_result = (text) => {
-        const result = document.getElementById("result");
-        result.innerText = text;
-      };
-      const put_info = (text) => {
-        const info = document.getElementById("info");
-        info.innerText = text;
-      };
-      const main = async () => {
-        const tokenizerJSON =
-          "https://huggingface.co/HuggingFaceH4/zephyr-7b-gemma-v0.1/resolve/main/tokenizer.json?download=true";
-        const tokenizerConfig =
-          "https://huggingface.co/HuggingFaceH4/zephyr-7b-gemma-v0.1/resolve/main/tokenizer_config.json?download=true";
-        put_info(
-          `Load tokenizer from \n - ${tokenizerJSON}\n- ${tokenizerConfig}`
-        );
+<body>
+  <h1>@lenML/tokenizers Demo</h1>
+  <p id="info"></p>
+  <p id="result">loading...</p>
+  <script type="module">
+    import { TokenizerLoader } from "@lenml/tokenizers";
 
-        const tokenizer = await TokenizerLoader.fromPreTrainedUrls({
-          tokenizerJSON,
-          tokenizerConfig,
-        });
+    const put_result = (text) => {
+      const result = document.getElementById("result");
+      result.innerText = text;
+    };
+    const put_info = (text) => {
+      const info = document.getElementById("info");
+      info.innerText = text;
+    };
+    const main = async () => {
+      const tokenizerJSON =
+        "https://huggingface.co/HuggingFaceH4/zephyr-7b-gemma-v0.1/resolve/main/tokenizer.json?download=true";
+      const tokenizerConfig =
+        "https://huggingface.co/HuggingFaceH4/zephyr-7b-gemma-v0.1/resolve/main/tokenizer_config.json?download=true";
+      put_info(
+        `Load tokenizer from \n - ${tokenizerJSON}\n- ${tokenizerConfig}`
+      );
 
-        const text = "Hello, world! This is a test sentence.";
-        const tokenized = tokenizer.encode(text);
-        console.log(tokenized);
-        const decoded = tokenizer.decode(tokenized);
-        console.log(decoded);
+      const tokenizer = await TokenizerLoader.fromPreTrained({
+        tokenizerJSON: await fetch(tokenizerJSON).then((r) => r.json()),
+        tokenizerConfig: await fetch(tokenizerConfig).then((r) =>
+          r.json()
+        ),
+      });
 
-        put_result(
-          `Text: ${text}\nTokenized: ${JSON.stringify(
-            tokenized
-          )}\nDecoded: ${decoded}`
-        );
-      };
+      const text = "Hello, world! This is a test sentence.";
+      const tokenized = tokenizer.encode(text);
+      console.log(tokenized);
+      const decoded = tokenizer.decode(tokenized);
+      console.log(decoded);
 
-      main();
-    </script>
-  </body>
+      put_result(
+        `Text: ${text}\nTokenized: ${JSON.stringify(
+          tokenized
+        )}\nDecoded: ${decoded}`
+      );
+    };
+
+    main().catch((error) => {
+      console.error(error);
+      alert(error);
+    })
+  </script>
+</body>
+
 </html>

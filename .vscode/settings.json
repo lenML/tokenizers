@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["davinci", "ONNX", "Pretrained", "xenova"]
+  "cSpell.words": ["davinci", "ONNX", "Pretrained", "xenova"],
+  "liveServer.settings.port": 5506
 }
