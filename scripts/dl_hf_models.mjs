@@ -98,6 +98,12 @@ const configs = [
   // 因为 google 的参考必须要登陆才给看... 所以换成 unsloth/gemma-3-1b-it
   hf_repo("unsloth", "gemma-3-1b-it", "gemma3"),
   hf_repo("Qwen", "Qwen3-4B", "qwen3"),
+  // kimi_k2
+  hf_repo("moonshotai", "Kimi-K2-Instruct-0905", "kimi_k2"),
+  // gpt-oss
+  hf_repo("openai", "gpt-oss-20b", "gptoss"),
+  // minicpm-v-4.5
+  hf_repo("openbmb", "MiniCPM-V-4_5", "minicpm_v4_5"),
 
   // from gist
   {

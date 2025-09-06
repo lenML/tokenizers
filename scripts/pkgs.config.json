@@ -126,5 +126,17 @@
   {
     "name": "qwen3",
     "globalNmae": "Qwen3Tokenizer"
+  },
+  {
+    "name": "kimi_k2",
+    "globalNmae": "KimiK2Tokenizer"
+  },
+  {
+    "name": "gptoss",
+    "globalNmae": "GPTOSSTokenizer"
+  },
+  {
+    "name": "minicpm_v4_5",
+    "globalNmae": "MiniCPM_V_4_5Tokenizer"
   }
 ]

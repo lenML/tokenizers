@@ -1,10 +1,16 @@
 import * as fs from "fs";
 import * as path from "path";
 import { URL } from "node:url";
+
+const __filename = new URL("", import.meta.url).pathname.slice(1);
+const __dirname = new URL(".", import.meta.url).pathname.slice(1);
+
 /**
- * (node:18584) ExperimentalWarning: Importing JSON modules is an experimental feature and might change at any time
+ * @type {import("./pkgs.config.json")}
  */
-import packages from "./pkgs.config.json" assert { type: "json" };
+const packages = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "./pkgs.config.json"), "utf-8")
+);
 
 function copyFolderSync(from, to) {
   if (!fs.existsSync(to)) {
@@ -41,9 +47,6 @@ const replace_in_file = (file_path, search, replace) => {
 
 // 基于 pkg_template 文件夹生成 pkg 文件夹
 const main = () => {
-  const __filename = new URL("", import.meta.url).pathname.slice(1);
-  const __dirname = new URL(".", import.meta.url).pathname.slice(1);
-
   console.log(
     `Generating packages in ${process.cwd()}, using ${__dirname} as template.`
   );
