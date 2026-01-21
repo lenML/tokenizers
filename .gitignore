@@ -134,3 +134,6 @@ dist
 !**/src/tokenizers/models
 
 local_demo/
+
+pretrained/**/*
+!pretrained/readme.md
