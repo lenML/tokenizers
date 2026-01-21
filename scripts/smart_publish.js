@@ -69,3 +69,4 @@ function checkPackages(dirPath) {
 }
 
 checkPackages(path.join(__dirname, "..", "packages"));
+checkPackages(path.join(__dirname, "..", "pretrained"));

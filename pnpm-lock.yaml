@@ -12,644 +12,6 @@ importers:
         specifier: ^7.6.0
         version: 7.7.2
 
-  packages/aya_expanse:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/baichuan2:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/chatglm3:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/claude:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/claude1:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/command_r_plus:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/deepseek_v3:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/gemini:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/gemma:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/gemma2:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/gemma3:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/gpt2:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/gpt3:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/gpt35turbo:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/gpt35turbo16k:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/gpt4:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/gpt4o:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/gptoss:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/internlm2:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/kimi_k2:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/llama2:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/llama3:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/llama3_1:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/llama3_2:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/minicpm_v4_5:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/mistral_nemo:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/qwen1_5:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/qwen2_5:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/qwen3:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
   packages/tests:
     dependencies:
       '@babel/preset-env':
@@ -657,10 +19,10 @@ importers:
         version: 7.28.3(@babel/core@7.28.4)
       '@lenml/tokenizer-gpt4o':
         specifier: workspace:^
-        version: link:../gpt4o
+        version: link:../../pretrained/gpt4o
       '@lenml/tokenizer-llama3_1':
         specifier: workspace:^
-        version: link:../llama3_1
+        version: link:../../pretrained/llama3_1
       '@lenml/tokenizers':
         specifier: workspace:^
         version: link:../tokenizers
@@ -699,72 +61,6 @@ importers:
         specifier: ^5.4.5
         version: 5.9.2
 
-  packages/text_davinci002:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/text_davinci003:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
-  packages/text_embedding_ada002:
-    dependencies:
-      '@lenml/tokenizers':
-        specifier: workspace:^
-        version: link:../tokenizers
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.7
-        version: 20.19.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
-      tslib:
-        specifier: ^2.6.2
-        version: 2.8.1
-      tsup:
-        specifier: ^8.0.2
-        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
-      typescript:
-        specifier: ^5.4.5
-        version: 5.9.2
-
   packages/tokenizers:
     devDependencies:
       '@huggingface/jinja':
@@ -789,11 +85,715 @@ importers:
         specifier: ^5.4.5
         version: 5.9.2
 
-  packages/yi:
+  pretrained/aya_expanse:
     dependencies:
       '@lenml/tokenizers':
         specifier: workspace:^
-        version: link:../tokenizers
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/baichuan2:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/chatglm3:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/claude:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/claude1:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/command_r_plus:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/deepseek_v3:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/gemini:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/gemma:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/gemma2:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/gemma3:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/gpt2:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/gpt3:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/gpt35turbo:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/gpt35turbo16k:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/gpt4:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/gpt4o:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/gptoss:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/internlm2:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/kimi_k2:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/llama2:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/llama3:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/llama3_1:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/llama3_2:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/minicpm_v4_5:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/mistral_nemo:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/qwen1_5:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/qwen2_5:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/qwen3:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/text_davinci002:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/text_davinci003:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/text_embedding_ada002:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
+  pretrained/yi:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
     devDependencies:
       '@types/node':
         specifier: ^20.12.7

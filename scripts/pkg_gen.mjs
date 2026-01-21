@@ -51,10 +51,11 @@ const main = () => {
     `Generating packages in ${process.cwd()}, using ${__dirname} as template.`
   );
 
+  const pkg_template_dir = path.join(__dirname, "pkg_template");
+
   for (const pkg of packages) {
     const { name, globalName } = pkg;
-    const pkg_dir = path.join(process.cwd(), "packages", name);
-    const pkg_template_dir = path.join(__dirname, "pkg_template");
+    const pkg_dir = path.join(process.cwd(), "pretrained", name);
 
     const tokenizer_config = readTokenizerConfig(path.join(pkg_dir, "models"));
 

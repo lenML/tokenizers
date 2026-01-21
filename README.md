@@ -238,6 +238,11 @@ The following table summarizes the performance benchmarks for the `Llama31` and 
 
 The benchmarking script used to generate these results can be found at `./packages/tests/benchmarks/main.ts`. You can use this script to replicate the benchmarks and validate the performance metrics for yourself.
 
+# Related repo
+
+- https://github.com/huggingface/transformers.js
+- https://github.com/huggingface/tokenizers.js
+
 # License
 
 Apache-2.0
