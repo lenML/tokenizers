@@ -239,6 +239,28 @@ importers:
         specifier: ^5.4.5
         version: 5.9.2
 
+  pretrained/deepseek_v4:
+    dependencies:
+      '@lenml/tokenizers':
+        specifier: workspace:^
+        version: link:../../packages/tokenizers
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.7
+        version: 20.19.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.19.13)(typescript@5.9.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.8.1
+      tsup:
+        specifier: ^8.0.2
+        version: 8.5.0(tsx@4.20.5)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.2
+
   pretrained/gemini:
     dependencies:
       '@lenml/tokenizers':
