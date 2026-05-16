@@ -38,11 +38,11 @@ const default_model_files = (repo_id) => [
 
 const hf_repo = (user, model_name, package_name) => ({
   files: default_files(`${user}/${model_name}`),
-  output_to: `./packages/${package_name}/models/`,
+  output_to: `./pretrained/${package_name}/models/`,
 });
 const hf_model_repo = (user, model_name, package_name) => ({
   files: default_model_files(`${user}/${model_name}`),
-  output_to: `./packages/${package_name}/models/`,
+  output_to: `./pretrained/${package_name}/models/`,
 });
 
 const repos = {
@@ -104,6 +104,7 @@ const configs = [
   hf_repo("openai", "gpt-oss-20b", "gptoss"),
   // minicpm-v-4.5
   hf_repo("openbmb", "MiniCPM-V-4_5", "minicpm_v4_5"),
+  hf_repo("deepseek-ai", "DeepSeek-V4-Flash", "deepseek_v4"),
 
   // from gist
   {
@@ -117,11 +118,14 @@ const configs = [
         filename: "tokenizer_config.json",
       },
     ],
-    output_to: "./packages/claude1/models/",
+    output_to: "./pretrained/claude1/models/",
   },
 
   // Xenova/claude-tokenizer
   repos.Xenova("claude-tokenizer", "claude"),
+
+  // grok 2
+  hf_repo("alvarobartt", "grok-2-tokenizer", "grok_2"),
 ];
 
 const retry = async (fn, retries = 5) => {

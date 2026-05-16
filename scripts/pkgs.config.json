@@ -138,5 +138,9 @@
   {
     "name": "minicpm_v4_5",
     "globalNmae": "MiniCPM_V_4_5Tokenizer"
+  },
+  {
+    "name": "deepseek_v4",
+    "globalName": "DeepSeekV4Tokenizer"
   }
 ]
