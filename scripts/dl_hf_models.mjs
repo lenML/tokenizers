@@ -125,7 +125,8 @@ const configs = [
   repos.Xenova("claude-tokenizer", "claude"),
 
   // grok 2
-  hf_repo("alvarobartt", "grok-2-tokenizer", "grok_2"),
+  // NOTE: 本来想加的，但是我实在是不太想用 grok ，可能很多人也不是很喜欢，懒得加了
+  // hf_repo("alvarobartt", "grok-2-tokenizer", "grok_2"),
 ];
 
 const retry = async (fn, retries = 5) => {
